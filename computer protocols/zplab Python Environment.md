@@ -11,12 +11,15 @@ http://zplab.wustl.edu
       xcode-select --install
 
 - Install the “homebrew” tool to simplify getting a few additional packages, by running the following:
+
       ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 - Use homebrew to install the following packages:
+
       brew install git fftw zsh
 
 - Last, make sure the mac knows about the new zsh shell:
+
       echo /usr/local/bin/zsh | sudo tee -a /etc/shells
 
 **On Linux:**  
@@ -24,6 +27,7 @@ Use the package manager to ensure that you have compilers installed (gcc or clan
 
 ## 2. Set up a zsh environment:
 - Change your default shell to zsh.
+
       chsh -s `which zsh`
 
 - Next, set up a `.zshrc` file:
@@ -59,26 +63,29 @@ export PATH=$ANACONDA_PATH:$PATH
 EOF
 ```
 
-- some OS-specific options.
-
-    **On OS X:**  
+- some OS-specific options.  
+    **On OS X:**
+    
       echo "export CLICOLOR=1" >> ~/.zshrc
       echo "export LSCOLORS='ExfxcxdxbxegedabagExEx'" >> ~/.zshrc
 
-    **On Linux:**  
+    **On Linux:**
+    
       echo "alias ls='ls --color=auto'" >> ~/.zshrc
 
 
 ## 3. Set up a Python environment using Anaconda:
-- Download (miniconda for Python 3)[http://conda.pydata.org/miniconda.html]:
-
-    **On OS X:**  
+- Download (miniconda for Python 3)[http://conda.pydata.org/miniconda.html]:  
+    **On OS X:**
+    
       curl -O https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
 
-    **On Linux:**  
+    **On Linux:**
+    
       curl -O https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
-- Install miniconda:  
+- Install miniconda:
+
       bash Miniconda3-latest-*-x86_64.sh -b -p $HOME/miniconda
       rehash
       rm Miniconda3-latest-*-x86_64.sh
@@ -120,6 +127,7 @@ conda env update -f user_env.yml
 rm user_env.yml
 ```
 
-- If you ever need to update to get the latest version of any of the zplab-specific libraries, you can run lines like the following:  
+- If you ever need to update to get the latest version of any of the zplab-specific libraries, you can run lines like the following:
+
       pip install --upgrade git+https://github.com/zplab/freeimage-py
     (for example) to upgrade freeimage-py.
