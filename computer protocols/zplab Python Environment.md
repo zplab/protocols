@@ -8,7 +8,7 @@ http://zplab.wustl.edu
 
 - Get the compilers by running the following in the terminal:
 
-       xcode-select --install
+      xcode-select --install
 
 - Install the “homebrew” tool to simplify getting a few additional packages, by running the following:
       ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
