@@ -7,6 +7,7 @@ http://zplab.wustl.edu
 **On OS X:**
 
 - Get the compilers by running the following in the terminal:
+
        xcode-select --install
 
 - Install the “homebrew” tool to simplify getting a few additional packages, by running the following:
