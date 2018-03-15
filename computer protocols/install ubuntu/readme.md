@@ -48,6 +48,7 @@
            sudo sgdisk -v /dev/sdX
            
      - create the RAID:
+     
            sudo mdadm --create --verbose /dev/md/ARRAYNAME --level=6 --raid-devices=8 /dev/sda1 /dev/sdb1 /dev/sdc1 /dev/sdd1 /dev/sde1 /dev/sdf1 /dev/sdg1 /dev/sdh1  
 
 6. Install XFS:
@@ -69,16 +70,14 @@
 8. If NFS is desired (generally not):
 
        sudo apt-get install nfs-common
-   edit `/etc/fstab` to add nfs mounts as desired, then make mount points, e.g.:
+   First, edit `/etc/fstab` to add nfs mounts as desired, then make mount points, e.g.:
    
        OTHER_SCOPE_NAME:/mnt/OTHERARRAY /mnt/OTHERARRAY nfs noatime,intr,x-systemd.automount 0 2
-   (TODO: is x-systemd.automount still necessary? As of 2016-11 it is required to allow nfs to mount on boot.)
-   
-       sudo systemctl enable NetworkManager-wait-online.service
-   (TODO: is the above required, or is it already enabled by default?)
-   
+   (TODO: is x-systemd.automount still necessary? As of 2016-11 it is required to allow nfs to mount on boot.)  
+   Then make the mount point: 
+      
        sudo mkdir /mnt/scopearray
-   Now enable NFS server:
+   Next, enable the NFS server:
    
        sudo apt-get install nfs-kernel-server
    Edit `/etc/exports` to add (e.g.):
