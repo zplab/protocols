@@ -1,0 +1,37 @@
+Miniprep for Injection Quality DNA
+==================================
+
+Origin unknown; suspect Michael Koelle lab.
+
+
+This protocol must be used for preparing DNA from bacterial cultures if its intended use is for microinjection. 
+
+1) Spin down 4.5mL of bacterial culture total. (Fill same tube 3x to generate a nice thick pellet).
+
+2) Resuspend pellet in 250µl of HOMEMADE P1 Buffer (without RNase). This is ESSENTIAL! Do not use the Qiagen buffer on this step as it contains RNase already. The remaining procedure also won’t have the blue dye added in.
+
+3) Proceed through column purification as usual (outlined in manufacturer protocol [Qiagen]).
+
+4) Resuspend in 50µl of EB at end.
+
+5) Add 150µl of sterile water to tube.
+
+6) Add 20µl of 3M Sodium Acetate pH5.2 and mix.
+
+7) Add 660µl of 100% Ethanol (-20˚C). Mix by inversion.
+
+8) Let samples sit in -20˚C for ≥ 15min. Turn on cold tabletop centrifuge, make sure lid is on securely and hit fast cool. This will ensure it is at proper temperature in time for next step.
+
+9) Spin samples at (14,000rpm) max speed for 10min at 4˚C in tabletop centrifuge.
+
+10) You should see a white pellet on the bottom of the tube. Pipette off supernatant and discard.
+
+11) Add 75-80% Ethanol (-20˚C), mix by inversion a bit. Spin again for 5min.
+
+12) Remove supernatant with pipette. Spin again for 2 min. Remove as much remaining liquid as possible with drawn out sterile glass pipette. 
+
+13) Dry the samples by leaving tubes in hood with cap open. Takes about 5min or so, depending on how much liquid is left.
+
+14) Resuspend pellet in Buffer EB prewarmed to 37˚C. 
+
+15) Quantify DNA and include concentration on label.

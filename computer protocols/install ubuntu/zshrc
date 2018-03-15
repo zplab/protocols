@@ -1,0 +1,30 @@
+setopt hist_ignore_dups
+setopt append_history
+HISTSIZE=100000
+SAVEHIST=100000
+HISTFILE=~/.zsh_history
+
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+
+bindkey -e
+bindkey "${key[Up]}" history-beginning-search-backward-end
+bindkey "${key[Down]}" history-beginning-search-forward-end
+
+autoload -U colors && colors
+prompt="%{$bold_color$fg[red]%}[%{$fg[blue]%}%n@%m:%{$fg[green]%}%25<..<%~%<<%{$fg[red]%}]%{$fg[green]%}%(!.#.>)%{$reset_color%} "
+
+setopt correct
+export SPROMPT="Correct %{$fg_bold[red]%}%R%{$reset_color%} to %{$fg_bold[green]%}%r%{$reset_color%}? ([No], Yes, Abort, Edit) "
+
+autoload -Uz compinit && compinit
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+
+export ANACONDA_PATH="/usr/local/miniconda3/bin"
+export PATH=$ANACONDA_PATH:$PATH

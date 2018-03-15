@@ -1,0 +1,196 @@
+PDMS and Hydrogel "Worm Corral" Protocol
+========================================
+
+Authors: Zachary Pincus, Will Pittman, Drew Sinha, and Willie Zhang
+Date: 2017-06-30
+http://zplab.wustl.edu
+
+
+Overview
+--------
+The goal is to produce an array of C. elegans culture "corrals", consisting of drops of OP50 food on a gel pad supported by a glass microscope slide. Each corral is blanketed by a layer of transparent, gas-permeable polymerized silicone (PDMS), which isolates the corrals from the outside world and each other by forming covalent bonds with the gel everywhere except at the location of the food drops.
+
+The gel is produced by Michael addition in which a PEG-thiol "Michael donor" makes a nucleophilic attack on a PEG-acrylate "Michael acceptor", creating a C-C bond at room temperature and neutral pH in aqueous buffer. After mixing, PEG-thiol and PEG-acrylate solutions are pipetted into a reservoir formed by a metal or plastic frame atop a glass slide. The gel crosslinks in this reservoir as the Michael addition proceeds.
+
+Once the gel is set, small drops of concentrated OP50 are pipetted onto the gel and individual C. elegans eggs are placed into each drop. PDMS is then poured atop and allowed to cure overnight while the eggs hatch.
+
+An overview diagram of the "worm corral" apparatus can be found here:
+http://zplab.wustl.edu/images/corral.png
+
+
+Materials
+---------
+- Material that can be cut into a thin frame and adhered to a glass microscope
+  slide, in order to produce a reservoir 1-2mm deep.
+
+    Example materials available from McMaster-Carr:
+      1) Adhesive-backed polyethylene sheet:
+         1/32" (0.79 mm) thick, cat. 1441T91
+         3/64" (1.19 mm) thick, cat. 1441T21
+
+      2) Hollow rectangular 1×3" (25.4×76.2 mm) aluminum tubing:
+         1/8" (3.18 mm) wall thickness, cat. 6546K55
+         * This material can be easily and inexpensively cut in a machine shop
+           to produce slide-sized frames of any desired thickness.
+
+      3) Adhesive-backed food-grade silicone sheet:
+         1/32" (0.79 mm) thick, cat. 86045K49
+         1/16" (1.59 mm) thick, cat. 86045K51
+
+- Polyethylene glycol diacrylate, Mn=700, here referred to as "PEG-DA"
+  Sigma-Aldrich: 100 mL, cat. 455008-100ML, $39.20 ea.
+
+- 8-arm polyethylene glycol thiol, Mn=10,000, here referred to as "PEG-8SH"
+  Jenkem USA: 1g, cat. "A10022-1 / 8ARM(TP)-SH-10K,1g", $120 ea.
+  http://www.jenkemusa.com/product/8arm-peg-thiol-tripentaerythritol
+  (Alternately, 10g quantities are available at ~20%  discount; in this case it
+   is best to ask for the material to be packed into sealed 600 mg aliquots.)
+
+- Dow Sylgard 184, here referred to as "PDMS"
+  Ellsworth Adhesives: 500 g kit, cat. "184 SIL ELAST KIT 0.5KG", $59.38 ea.
+
+Common lab items also required:
+- plain glass slides
+- 10 cm petri dishes
+- Kimmwipes
+- Parafilm
+- Bacto Peptone
+- NaCl
+- MgSO₄
+- KH₂PO₄
+- K₂HPO₄
+- cholesterol
+- sterile water
+
+
+Important Notes
+---------------
+(0) The frame on the slide holds the gel while it cures. The thickness of the frame determines the thickness of the gel. Thicker gels are more resistant to desiccation during long experiments, but are more expensive. 1-2 mm of depth is typically reasonable. (At current single-gram pricing, each mL of gel contains approximately $8 worth of PEG-8SH; a 20×70×1.5 mm reservoir requires ~2.1 mL.)
+
+Any material that can be glued or otherwise adhered to a glass slide and which does not contain sulfur or tin (see note 2) can be used to produce the frame.
+
+We have successfully used adhesive-backed silicone with pre-cut voids (used for tissue culture on glass slides), adhesive-backed polyethylene sheets (which we cut manually with a blade or have had professionally machined), and custom-machine aluminum. (Note that polyethylene may melt in the autoclave, though we have had luck with the sheets from McMaster above after supplementing the adhesive with epoxy.)
+
+We have now standardized on using aluminum frames (cut from hollow rectangular tubing, which is much less expensive than having them machined from solid billets). We securely adhere the frames to glass slides with a small amount of PDMS. After curing the PDMS at 100°C or higher, it serves as an autoclave-safe adhesive that can be removed from the aluminum when necessary.
+
+(1) The pH of the buffer in the Michael reaction is critical: below pH ~6.2, the reaction will not proceed. At pH 6.3, gelation takes approximately 1.5 hours; at pH 7 the reaction proceeds in approximately 15 minutes. If allowed to cure too long, the gel can stick to the slide on the top of the assembly (see below) making it hard to remove. Thus it is best to remove the top slide as soon as curing is done.
+
+(2) Any sulfur or tin present will inhibit the curing of the PDMS. Sulfur is commonly used as a plasticizer in many rubbers and other soft plastics, including latex gloves, and tin is used in curing some silicones (PDMS is platinum-catalyzed). Handle all materials with nitrile gloves only, and wash items that have been in contact with latex or any other rubbers with ethanol.
+
+(3) The PEG-8SH should be stored at -20°C. It slowly hydrolyzes, so it is shipped sealed under argon. Thus it is best to minimize handling. If ordering larger quantities, JenKem will package then into smaller aliquots on request. (We find that 600 mg aliquots are a good size.)
+
+(4) The PEG-DA should be stored at 4°C. At this temperature it is a waxy solid and is annoying to work with. ~1 mL working aliquots can be removed and kept as a liquid at room temperature for a month or two in 1.5 mL tubes.
+
+(5) An eyelash pick can easily be made by mixing epoxy in a weigh-boat and putting the small end of a glass Pasteur pipette into the epoxy. Wipe off the outside, and there will be 2-4 mm of epoxy inside the barrel of the pipette. Obtain an eyebrow or eyelash hair and using tweezers insert the follicle end into the pipette, and allow the epoxy to cure.
+
+(6) PDMS gets everywhere! Mix it up over paper towels, clean vigorously (ethanol is good, hexanes are best), and try very hard not to drip.
+
+(7) Contamination by mold is not infrequent in corrals constructed at the bench, even with reasonable sterile technique. Though it is more difficult to construct the corrals in a clean/sterile hood (such as a PCR hood) with sterile supplies, this can reduce the rate of contamination. All supplies should either be from pre-sterilized packages (such as plastic petri dishes), or be autoclaved or filter-sterilized. This includes kimmwipes for creating humid chambers, which can be pre-cut and folded and sterilized in foil pouches. Empirically, we have found that PDMS base and cure are uncontaminated when freshly opened. We recommend only opening these in a clean/sterile environment, if possible, and if not, aliquoting them in such an environment. Alternately, aliquots can be baked at high temperature to sterilize them.
+
+
+Slide Assembly
+--------------
+Note: this can be done in bulk ahead of time.
+
+For adhesive-backed polyethylene or silicone sheets:
+Using a matte knife or similar, cut out a 25×75 mm rectangle of the polyethylene sheet. Then cut out an internal rectangle, leaving a frame approximately 4 mm wide. (Optional: cut a notch or leave one side of the frame with a wider edge to allow easy determination of slide orientation.) Remove the adhesive backing or otherwise adhere the frame to a glass slide. Wash with ethanol to clean and ensure that the frame remains well attached to the slide.
+
+For aluminum frames:
+Pre-heat hot-plate or oven to 100-120°C. Prepare at least 200 µL PDMS per slide by mixing PDMS base and cure reagents in a 10:1 ratio in a 1 mL Eppendorf tube. Mix thoroughly using a clean stir rod and spin down briefly (< 5 s) in a centrifuge. Apply 60-120 µL PDMS to the bottom side of a frame and invert the frame onto a glass slide. Heat-cure PDMS for 1.5-2 hr.
+
+(Optional) Cure a 2-3 mm thick mat of PDMS to cut into strips to support the glass slides in the humid chambers. (These strips keep the slides from slipping around in the petri dish humid chambers, and prevent liquid from wicking under the slides making them hard to remove.) Mix the PDMS base and cure reagents in a 10:1 ratio and pour into a shallow, flat-bottomed container like a petri dish. Bake or heat on a hot plate at ~60-80°C for 2-3 hours, then remove the silicone and cut into approximately 25×5 mm strips. 
+
+
+OP50 Food
+---------
+Make a 50% w/v suspension of OP50 in M9: pellet ~50 mL of an overnight culture of OP50 in LB. Resuspend the pellet in M9 and transfer to a pre-weighed 1.5 mL tube. Spin down again, remove supernatant, and weigh pellet. Resuspend to approximately 50% w/v, approximating the density of the OP50 pellet as 1 mg / µL. (50 mL yields ~250 mg OP50, which is enough for 0.5 mL of 50% w/v solution. So in that case resuspend it in 250 µL of M9, assuming that the other 250 µL of volume will be the OP50.)
+
+Aliquot and store the OP50 at 4°C for no more than two weeks.
+
+
+Corral Assembly
+---------------
+The goal is to create a gel that is 8.5% PEG w/v, in an NGM-like medium at pH 6.3. Because the PEG-8SH and PEG-DA need to react in a 4:1 molar ratio, this works out (based on their molecular weights) to 6.64% PEG-8SH and 1.86% PEG-DA. To achieve this, separate 2 solutions are made for each PEG. The solutions are then mixed at 1:1 ratio and the gel is cured.
+
+(0) Make 100 mL of "Corral NGM":
+This is per the standard NGM recipe, omitting agar and the CaCl₂, which crystallizes and makes imaging much worse.
+http://www.wormbook.org/chapters/www_strainmaintain/strainmaintain.html#d0e214
+
+ - Dissolve the following in 97.5 mL H₂O:
+     300 mg NaCl
+     250 mg peptone
+ - Add:
+    100 µL 1 M MgSO₄
+    2.5 ml 1 M pH 6.3 KPO₄ buffer
+ - Adjust pH to 6.3 (or if faster reactions are desired, to pH 6.5-6.8).
+ - Filter-sterilize and store indefinitely
+
+Alternately, autoclave before adding the salts, and using sterile technique, add phosphate buffer pre-adjusted to the desired pH. (Double-check that the final pH is correct though.) We prefer filter-sterilization to remove any precipitate.)
+
+The following steps are for 1 mL of gel. Adjust as necessary based on the interior volume of the frames on the slides. Typically, at least 1.8-2 mL of gel is ideal to cover the bottom of the frame interior.
+
+(1) Make ~500 µL of 13.28% NGM-PEG-8SH:
+ - Weigh out ~70 mg PEG-8SH into a 1.5 mL tube.
+   (Note the final weight of the material dispensed.)
+ - Divide the weight of the PEG in mg by 0.1328 to find the final volume needed.
+   (If exactly 70 mg were weighed out, this would be 527 µL.)
+ - Add ~400 µL "Corral NGM" to the PEG-8SH and dissolve with vigorous
+   vortexing and tapping. (Pipetting to mix doesn't work too well.)
+ - Note the new volume (either visually or measure via pipette).
+ - Add sufficient "Corral NGM" to bring the volume up to the amount calculated
+   above.
+
+(2) Make ~500 µL of 3.72% NGM-PEG-DA:
+ - Weigh out ~20 mg PEG-DA into an 1.5 mL tube. This is most easily
+   accomplished by pipetting 17.9 µL liquid PEG-DA into the tube.
+   (Note the final weight of the material dispensed.)
+ - Divide the weight of the PEG in mg by 0.0372 to find the final volume needed.
+   (If exactly 20 mg were weighed out, this would be 538 µL.)
+ - Add an amount of NGM equal to the final volume required minus the volume of
+   PEG-DA dispensed, and vortex vigorously.
+
+Note: Excess PEG solutions can be kept at 4°C for ~1 week. The PEG will hydrolyze slowly, so long-term storage in solution isn't optimal. If storing in this way, each solution should be filter-sterilized separately before storage.
+
+(3) Mix the 13.28% NGM-PEG-8SH and 3.72% NGM-PEG-DA solutions in a 1:1 ratio to produce the desired amount of gel solution. If the solutions were not filter-sterilized individually, filter-sterilize the mixture through an 0.22 µm filter. (Generally a syringe filter works well. The PEG can either be added to the back of the syringe, or drawn up via a needle or a pipette tip screwed into the Luer connector.)
+
+(4) Add 4 µL of 5 mg/mL cholesterol in EtOH to each mL of solution. Vortex immediately after transfer to minimize precipitation. 
+
+Note that we generally add the cholesterol after filtering, as we worry that filtering may remove precipitate that contributes to the availability of cholesterol in the gel. (We have empirically found that cholesterol bioavailability seems lower in the PEG gel than in an agar gel, as 4× cholesterol is required in these conditions for proper viability.)
+
+(5) Prepare a humidity chamber for corral storage during curing and animal transfer. Prepare two Kimmwipe strips from regular Kimmwipes by folding half-wipes into 1×3 cm strips (or make ahead of time and autoclave). Place the strips in a 10 mm Petri dish such that they are maximally distant from the long edge of the glass slide. Moisten the each strip just to saturation with sterile water (typically 700 µL/strip). Optionally place autoclaved PDMS strips to provide an elevated and no-slip rest for the corral frame.
+
+(6) Place the gel slide in the humid chamber on the supports, so that water does not wick from the Kimmwipe underneath the slide.
+
+(7) Gently pipette mixed PEGs into the reservoir created by the frame:
+
+(7a) If intending to fill the frame to the top (this yields the most smooth and uniform surface for imaging):
+
+Sandwich a glass slide on top of a slide+frame apparatus, leaving the top slide slightly crooked so that there is a small gap at either end of the slide. Gently pipette the gel solution into the apparatus via one gap, allowing air to be displaced via the other gap. Once no/few bubbles remain, align the slides and allow to cure for ~1.5 hours. Assay gelation by keeping any leftover gel mix in a 1.5 mL tube and flicking/probing gently. When this has solidified, it will be safe to remove the top glass slide. Do not let the glass slide stay on top too long after curing is finished, otherwise it will be hard to remove. We find it best to use a 25×75 mm glass coverslip for the top glass slide, as this is easiest to remove without tearing the gel.
+
+Once the gel is cured, gently slide / pry off the top glass slide so as not to gouge or otherwise disrupt the top surface of the gel. this is most easily accomplished by using a razor blade to gently lever the top slide from the frame, and then peeling up along the length of the slide. Do not drag/slice the razor across the top surface where the worms are to be deposited, however.
+
+(7b) If not intending to fill the frame to the top (this provides a nice rim which will contain the PDMS added atop later, reducing the potential for spills):
+
+Gently pipette the gel solution into the interior of the corral frame. Spread the solution using the edge of the pipette tip to ensure that the liquid covers the full bottom of the frame interior. Optional: carefully place a sterile glass slide atop the frame to prevent desiccation during curing (even in the humid chamber).
+
+(8) At this point, gel slides can be kept for ~24 hours sealed in the humid chamber with parafilm, ideally at 4°C, if they are not to be used immediately.
+
+(9) Pipette 0.4 µL droplets of 50% w/v OP50 onto the surface of the gel. (Larger drops are fine, and in this case the OP50 concentration can be lower. Generally 0.4 µL makes ~1.5-2 mm diameter droplets.) A repeater pipette capable of small volumes (e.g. a Sartorius Picus 10) simplifies this greatly.
+
+(10) Before the droplets dry, use an eyelash pick to transfer individual  eggs to each food drop. We have found that pretzel-stage eggs survive the transfer best, but other stages can be used. It's easiest to pick up the eggs by placing the eyelash immediately to the side of the egg and then "flicking" as if to knock the egg aside. If the egg disappears, it is stuck to the pick. Then move to the food droplet and gently dip the eyelash in and out of the droplet until the egg is dislodged and observed to stay in the droplet. Keep the slide in the humid chamber the entire time, only uncovering when transferring each egg.
+
+This is most easily accomplished using two dissection microscopes: one focused on a culture plate with many eggs, and one focused on the gel. An intermediate level of magnification makes it easier to see the egg detach in the food droplet. If performing the assembly in a clean hood, it may be hard to use a microscope. Instead, use a microscope outside of the hood to pick up the egg, and then deposit the egg onto the slide without a microscope. This technique is a little trickier to pick up, but is not difficult. It is best to start with the two-microscope method at first.
+
+(11) Allow the OP50 to adsorb onto the plates in the humid chambers (~15 minutes).
+
+(12) While the OP50 is adsorbing, make the PDMS. Coating a 25×75 mm slide with a layer of PDMS 0.4-0.5 mm thick (the thinnest easily achievable) requires ~1 mL of PDMS. As it's hard to get every last bit of PDMS out of a tube, make ~1.5 mL total per slide by putting 750 µL of base reagent and 75 µL of cure reagent into each of two 1.5 mL tubes. 5 mL tubes can be used for larger volumes. (The cure reagent is viscous but can be pipetted slowly; the base reagent is more easily transferred with a 1 mL syringe.) Vigorously stir the base and cure together, using e.g. a glass pasteur pipette with the end melted closed as a tiny stir rod. The mixture should be homogeneously mixed and bubbly throughout.
+
+(13) Spin the bubbles out of the PDMS mixture with a 1-minute spin at maximum speed in a micro-centrifuge. Alternately, a clinical centrifuge can be used with 5-15 mL tubes.
+
+(14) After the OP50 is dry, gently pour ~1 mL PDMS over the slide. PDMS can be poured directly from 1.5 mL tubes, or dispensed using a 1 mL syringe. The latter is generally easier. In any case, try to not create bubbles, but to cover most of the surface of the slide. If the frame was filled to the top with PEG gel, it is essential to not let the PDMS spill off the edge of the slide. If the frame was not filled to the top, simply fill the remaining volume with PDMS but do not overflow beyond the top of the frame.
+
+As PDMS is very viscous but has low surface tension, it will slowly spread to cover the slide after about 15 minutes. You may need to pop a few bubbles with a syringe needle or pipette tip, but these usually go away on their own. Gently tilting the chamber with the slide can also help coax the PDMS toward an edge if it is not spreading on its own.
+
+(15) Seal the humid chamber with parafilm and let the PDMS cure overnight at 15-25°C (whatever is appropriate for the strain being used and the experiment). Make sure that the slide and chamber are level, otherwise the PDMS will flow unevenly. Alternatively, place the slide in the desired (humidified) experimental apparatus directly.
+
+(16) After 12-24 hours, the PDMS will be tacky but cured. (This can be gently assayed by touching the PDMS surface with the same type of sealed-end pasteur pipette used to stir the PDMS.) After 24-48 hours, the PDMS will be fully cured. C. elegans can be imaged in the corrals before the PDMS cures, but make sure to not accidentally get any on your microscope objective. (Retaining the residual PDMS in the 1.5 mL tubes can also help assay when the cure is complete.)

@@ -1,0 +1,48 @@
+Single Worm PCR
+===============
+
+Author: Will Pittman
+Date: 2015-11-13
+http://zplab.wustl.edu
+
+10× Lysis Buffer:
+    0.5 M KCl
+    100 mM Tris (pH 8.3)
+    25 mM MgCl2
+    4.5% Nonidet P-40
+    4.5% Tween-20
+    0.1% w/v Gelatin
+* Note: any 10× Taq buffer or other PCR buffer generally works fine, but this is the official recipe.
+
+1)  Thaw on ice:
+	- 10× Lysis Buffer
+    - 10 mg/mL Proteinase K
+	- Taq Master Mix
+    - nuclease-free water
+    - primers necessary primers
+
+2) Prepare 1× Lysis Buffer (5-10 µL required per worm)
+	For 100 µL:
+	    1 µL Proteinase K (100 µg/mL final concentration)
+	    10 µL 10× buffer
+	    89 µL water
+
+3) Prepare Tubes for Worm Lysis:
+	- Aliquot 5 µL of Lysis Buffer into each PCR tube
+	- Carefully pick individual worms into each tube
+	- Flick tubes and briefly spin with benchtop centrifuge
+
+4) Worm lysis cycle on PCR machine:
+    60°C for 60 min
+    95°C for 15 min to inactivate proteinase K
+    4°C cool
+
+5) Prepare a “Master Master-Mix” using the Taq Master Mix and other PCR components:
+	-Final volume 25 µL, including 5µL of worm lysis 
+	-Remaining components:
+        12.5 uL of the 2X Taq Master Mix
+        0.75 uL of each primer
+        water to bring volume to 25 µL.
+	-Prepare such that you have enough for ~3 extra reactions
+
+6) Add 20 µL of above master mix to each of the tubes and PCR cycle.

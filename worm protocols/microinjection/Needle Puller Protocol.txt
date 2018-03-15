@@ -1,0 +1,29 @@
+Pulling Needles for Microinjection
+==================================
+ 
+Author: Travis Mazer
+Date: 2015-09-23
+http://zplab.wustl.edu
+
+
+Needle puller is on the 9th floor in Nonet Lab
+
+Bring a pen to record your use of the puller on the yellow note pad to the right of the puller
+
+(1) Turn on puller with power switch on left side, press “0” for program 0
+
+(2) Check pressure setting, should be at 500, if not, adjust
+
+(3) Open lid, carefully insert glass tube in the left sliding holder, with the left most end of the tube lining up with the red line drawn on the holder
+
+(4) Screw tight and press down on the panels behind both holders to free them
+
+(5) Pull holders together using the small handles and screw tight right holder onto tube
+
+(6) Close lid, press “Pull”
+
+Filament should glow 3 times before needles are pulled
+
+(7) Open lid and remove needles
+
+(8) When done, close lid, turn power switch off, and replace plastic cover

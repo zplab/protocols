@@ -1,0 +1,10 @@
+## Make descriptive symlinks in /dev to various microscopy devices
+
+# Leica microscope
+SUBSYSTEMS=="usb", ATTRS{product}=="Leica DMI8", ATTRS{manufacturer}=="Leica Microsystems", SYMLINK+="ttyScope"
+
+# Lumencor Spectra lamp
+SUBSYSTEMS=="usb", ATTRS{product}=="UT232R", ATTRS{manufacturer}=="FTDI", ATTRS{serial}=="FTYHQQCP", SYMLINK+="ttySpectra"
+
+# IOTool interface box
+SUBSYSTEMS=="usb", ATTRS{product}=="IOTool", ATTRS{manufacturer}=="zplab.wustl.edu", ATTRS{serial}=="0xFFFF", SYMLINK+="ttyIOTool"

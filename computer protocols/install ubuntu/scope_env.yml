@@ -1,0 +1,30 @@
+channels:
+    - defaults
+    - conda-forge
+
+dependencies:
+    - python>=3.6
+    - ipython
+    - numpy
+    - scipy
+    - scikit-learn
+    - pyopengl
+    - cython
+    - pyzmq
+    - cffi
+    - pyfftw
+    - python-daemon
+    - pyserial
+    - python-blosc
+    - pip:
+        - pyqt5
+        - matplotlib
+        - scikit-image
+        - qtconsole
+        - PySDL2
+        - git+https://github.com/zplab/freeimage-py
+        - git+https://github.com/zplab/zplib
+        - git+https://github.com/zplab/RisWidget
+        - git+https://github.com/zplab/SharedMemoryBuffer
+        - git+https://github.com/zplab/IOTool#subdirectory=py
+        - git+https://github.com/zplab/rpc-scope

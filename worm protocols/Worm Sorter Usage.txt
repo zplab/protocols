@@ -1,0 +1,53 @@
+COPAS Biosort Usage
+===================
+
+Author: Travis Mazer
+Date: 2015-03-11
+http://zplab.wustl.edu
+
+
+0-a) Open pressure valve (on wall behind and to the right of the monitor), power on the sorter by hitting the switch on the lower left side of the machine.  Hook the waste tubing around the brown waste motor.  
+
+0-b) On the computer’s Desktop, double click "copas5106."  Once the program has loaded, depending on how you want to sort, click File on the top of the window and open the file associated with your template, e.g. "11-2014worms" for a 384 well plate.  Click on the Start button.
+
+0-c) Raise the hood and check if there is any sample or water in the primary sample cup.  If it is dry, skip ahead to steps 9-12 before beginning.
+
+1) Detach the tube from the top of the sample cup and unscrew the sample tube cap.  Remove water in the cup and add your sample.  Replace both the cap and the tube.
+
+2) Check the pressure values on the bottom of the program window and see if the Sample Pressure is between 0.1-0.3 units higher than Sheath Pressure (Normally around 4.06).  If not, adjust the knob on the lower right face of the machine to match that range.
+
+3) Click on the Pressure Ok checkbox, click Done on the laser prompt.
+
+4) Click Acquire and allow the sorter to detect samples for a few minutes.  Several peaks or at least one peak should form on the graph labeled TOF (Time of Flight).  Click Stop when you have your peak of interest available.
+
+5) Adjust which peak you wish to select for in sorting by adjusting the limits in the Sorting Limits box, adjusting TOF Lo for the lower bound and Hi for the upper bound.  
+
+6) Under the Threshold box in the middle of the window, click the Close button to reveal the worm sorting template.  If there is already a template in use, or you want to use a different template, click on Plate Formats near the top of the window and select the new template you want.  Then click on the white boxes and numbers will fill them, indicating the order of worms to be sorted.
+
+7) Click Load Plate.
+
+8) After loading your plate, remove plate from the sorter.  Aspirate remaining sample using the syringe next to the sorter.
+
+9) Fill sample cup with 40 ml of DI water, and hit Acquire until the sample cup is almost empty, at which point click Stop.
+
+10) Add 25 ml of Cleaning reagent (found in the cabinet below the computer) to the sample cup and check the Sample Valve checkbox under Manual Control.  Uncheck the Sample Valve checkbox when the sample cup is almost empty.
+
+11) Add 40 ml DI water to the sample cup and aspirate it away.
+
+12) Add 40 ml DI water to the sample cup and hit Acquire until the sample cup is half full, and then click Stop twice.
+
+13) Exit the program, and restart the computer.
+
+14) Unhook the waste tubing from the brown motor and flip the power switch off.  Close the hood, making sure to not have the hood resting on any tubes.
+
+15) Close main pressure valve on wall. 
+
+Notes:
+- Generally sheath pressure should be at ~4.
+- Recently (6/10/16) optimized “Width” and “Delay” settings to 5 and 7.5 respectively.
+
+
+For Clogs
+---------
+If you encounter a clog, conduct steps 8-12, except replace the Cleaning reagent in step 10 with 40ml of 5% sodium hypochlorite (33 ml of the bleach under kept under the sink plus 7 ml of DI water).
+

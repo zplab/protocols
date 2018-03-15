@@ -1,0 +1,61 @@
+Liquid Culture in 96-well Plates
+================================
+
+Author: Holly Kinser
+http://zplab.wustl.edu
+
+
+Protocol based on the paper: High-Throughput and Longitudinal Analysis of Aging and Senescent Decline in Caenorhabditis elegans by Eirini Lionaki and Nektarios Tavernarakis, Cell Senescence: Methods and Protocols. 2013
+
+Prep of Feeding Bacteria
+------------------------
+1) Streak out OP50-1 (strep resistant) from frozen stock onto a LB/strep agar plate. Grow overnight @ 37°C.
+  - Use 100 µg/mL Streptomycin plates. 
+  - Streptomycin plates are not stocked; we must make our own if running low.
+
+2) Pick a single colony and inoculate 5 mL of LB/strep medium. Shake at 250 rpm overnight (~12-16hrs) at 37°C. Prepare an autoclaved, 500 mL flask of LB for the next day.
+  - Streptomycin concentration in LB should be 100 ug/mL.
+  - Streptomycin stock is 100mg/mL.
+
+3) The next day, inoculate 500 mL LB/strep (again 100 µg/mL strep) medium using 500 µl of the overnight culture and incubate at 37°C overnight (~12 hours).
+
+4) Transfer the bacterial culture to pre-weighted sterile 50 mL centrifuge tubes and centrifuge for 10 minutes at 3000g. Pour out LB and wash cells twice with sterile water.
+
+5) Pat upside down centrifuge tubes against paper towels to remove the remaining water and weigh the bacterial pellet. 
+  - One 50 mL tube of bacteria is more than enough for 1 96-well plate. Other tubes can be frozen and possibly used at a future date.
+
+6) Resuspend the bacterial pellet in S-complete medium to a final concentration of 100 mg/mL. Resuspend by shaking at room temperature for 15-60 minutes at 250 rpm. Store bacteria at 4°C.
+
+
+Prep of worms
+-------------
+1) Obtain by either egg prep or by other method, a synchronized population of L1 larvae. Wash the L1s into a 50 mL conical tube with S-complete medium. Then adjust the volume of S-complete medium in order to approximate how many worms per well you want. You will want at least 12-15 mL of worm suspension for one 96-well plate.
+  - Example: Each well initially has 120 µl. If you want 12 worms per well, you will want 100 worms per mL. 
+  - Invert tube several times and spot out ten 10 µl drops on a plate. Count the number of worms in each drop. This gives you an estimate of the mean number of worms per mL. 
+  - Adjust the volume of S-complete medium to achieve the correct # of worms per mL for your assay.
+
+2) Once you have your worm concentration adjusted, add streptomycin (final concentration of 200 µg/mL) and nystatin (final concentration of 10 µg/mL) to prevent contamination.
+  - Nystatin stock has NOT been made. Nystatin is located in the -20°C feezer. Make a 10 mg/mL stock in 70% ethanol. This will be a suspension – shake prior to use.
+
+3) Add feeding bacteria to the final concentration of 6 mg/mL.
+
+4 )Mix the worm suspension by inverting tube several times and put 120 µl in each of the 96 well. Make sure to keep inverting the tube as you go to keep the worms evenly distributed.
+
+5) Seal plate with transparent plate sealing film and put plate on shaker in 20°C incubator. Shake vigorously. Make sure liquid in all the wells is in motion.  
+
+
+Sterilizing with FUdR
+---------------------
+1) Make a 0.6 mM stock of FUdR in S-complete medium. 
+  - Once worms have reached the L4 stage, remove the sealing film and add 30 µl of the 0.6 mM stock to each well. Final concentration in each well should be 120 µM.
+  - Reseal the plate and return to the shaker in the 20°C incubator.
+
+
+Feeding the Worms
+-----------------
+Worms need to be fed once a week to prevent starvation (based on 12 worms per well).
+
+1) Resuspend the feeding bacteria that have been stored in the 4°C by inverting the tube several times.
+2) Transfer out what is needed into a sterile tube and allow it to warm to room temperature,
+3) Remove sealing film and add 5 µl of bacteria to each well.
+4) Reseal the plate and return to the shaker in the 20°C incubator.

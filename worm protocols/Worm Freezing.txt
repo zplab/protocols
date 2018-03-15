@@ -1,0 +1,29 @@
+Freezing Worms
+==============
+
+Author: Zachary Pincus
+Date: 2013-11-14
+http://zplab.wustl.edu
+
+
+Freezing solution (autoclave):
+S Buffer [129 ml 0.05 M K2HPO4, 871 ml 0.05 M KH2PO4, 5.85 g NaCl] + 30% glycerin (v/v)
+
+
+1) Prepare at least 3 plates of each strain, and wait until the plates are freshly starved with lots of L1s these survive freeze/thaw best). It is important that the plates haven't starved more than overnight.
+
+2) Put 800 µL M9 on each plate, and wash worms off into a 2 mL tube yield ~1.8 mL).
+
+3) Spin down ~30 sec in mini-centrifuge to pellet L1s.
+
+4) Aspirate to 900 µL or so.
+
+5) Add 900 µL freezing solution, mixing well.
+
+6) Mixing each time, transfer 500 µL solution to each of three cryo-vials. Retain remaining ~300 µL in 2 mL tube as tester.
+
+7) Freeze at -80°C in slow-cooling Biocision foam container. Make sure that unused slots in container are populated with dummy glycerol-filled vials.
+
+8) After ~5 days at -80°C, thaw test vial and make sure an adequate yield of L1s is recovered.
+
+9) If thaw was successful, transfer 1 vial to liquid N2, 1 vial to -80°C replicate backup, and keep 1 vial for personal use. 

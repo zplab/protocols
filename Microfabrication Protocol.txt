@@ -1,0 +1,166 @@
+Microfabrication with SU-8 2050
+===============================
+ 
+Author: Zachary Pincus
+Date: 2017-06-19
+http://zplab.wustl.edu
+
+Adapted from Microchem SU-8 datasheet and various internet lore.
+
+
+Gowning
+-------
+0) Clean shoes with brush-machine, put on hair (and beard) net, and shoe covers, then enter main gowning area.
+
+1) Put on gloves, then gown up in top-to-bottom fashion: hood (if separate from coveralls), coveralls, and shoe covers. Hood should be tucked into coveralls, shoe covers go outside. Try to not allow coveralls to touch floor as you are gowning.
+
+2) Wipe down with IPA any items to be brought in with you.
+
+3) Replace gloves, and then double-glove if you want to be able to easily change external gloves in the cleanroom.
+
+
+Prepare Substrate
+-----------------
+** This section is a work in progress! **
+
+Substrate preparation is thought to be important to prevent SU-8 delamination, especially when used as a PDMS master where there will be repeated heating cycles (which can weaken the SU-8 adhesion to the silicon wafer due to differential thermal expansion). 
+
+Option 1: BOE
+0) Don protective equipment for handling HF. First, put on rubber apron, then face-guard, then gloves. (Remove in reverse order.)
+1) Rinse wafer under DI water for a few seconds to wet.
+2) Submerge wafer in Buffered Oxide Etch (BOE) for ~30s. 
+*** CAUTION: BOE contains Hydrofluoric Acid ***
+3) Remove wafer and rinse well under DI water for >30s.
+
+Option 2: Acetone/IPA
+1) Immerse wafer in acetone with agitation for ~1 min
+2) Immerse wafer in isopropanol with agitation for ~1 min
+3) Rinse wafer under DI water.
+
+Follow-up steps for both:
+4) Blow-dry wafer with N₂.
+5) Bake dry on hotplate at 200°C for at least 5 minutes.
+6) Cool with stream of N₂.
+
+Option 3: Clean wafer with oxygen plasma. (Suggested parameters: 150 mTorr O₂ at 60 W for 2 minutes).
+
+Option 4: Spin on a thin (5 µm) layer of low-viscosity SU-8 and flood expose to produce a stable base layer. 
+
+BOE is currently considered most reliable.
+
+
+SU-8 2050 Process Table
+-----------------------
+Thickness  Speed  Pre-65°C  Pre-95°C  Post-65°C  Post-95°C  Develop  Exposure
+(µm)       (RPM)  (min)     (min)     (min)      (min)      (min)    (mJ/cm²)
+
+  40       4000    0-3       5-6       1          5-6        4-5      150-160
+  52       3000    0-3       6-9       1-2        6-7        5-7      150-215
+  75       2000    0-3       6-9       1-2        6-7        5-7      150-215
+  170      1000    7         30-45     5          12-15      15-17    260-350
+
+
+Spin-Coat SU-8
+--------------
+0) Turn hotplate to 65°C and allow to come up to temperature. If there are bubbles in SU-8, heat closed bottle on hot plate at 65°C for about 5 minutes (until slightly warm), then cool to room temperature.
+
+1) Make sure spin-coater bowl is clean. Remove chuck if present, and line bowl with aluminum foil. Insert largest chuck, and place wafer roughly centered on it.
+
+2) Load pre-set program for desired SU-8 thickness. (Current standard Pincus lab protocol is to use the SU-8 60 micron program, which appears to create ~75 µm features. This program has a 2500 RPM 30-second spin, and is otherwise identical to the template below.)
+
+Alternative: program the following recipe:
+   - 10 seconds at 500 RPM with 100 RPM/s ramp
+   - 30 seconds at XXX RPM with 300 RPM/s ramp
+   - 1 second at 0 RPM with 300 RPM/s ramp
+
+3) Run centering step to ensure wafer is centered.
+
+4) Coat wafer with SU-8, pouring from the bottle. Pour as close to the surface of the wafer as possible to reduce bubbles. Use ~1 mL / inch of wafer diameter.
+
+5) Run spin-coat program and remove wafer.
+
+6) Allow wafer to rest on leveled surface at room temperature 10 min to reduce edge-bead effect. Place a glass petri dish over the plate to reduce solvent evaporation while the bead settles.
+
+7) While wafer rests, clean the spin coater bowl.
+
+8) Pre-bake at 65°C for the specified time above, then ramp hotplate to 95°C and bake for the specified time. Optional: increase 95°C time by up to 1.5×.
+
+Current standard Pincus lab protocol for 75 µm SU-8 is to bake 3 minutes at 65°C and 14 minutes at 95°C.
+
+During the bake, turn on the mask aligner lamp to allow it time to warm up (see below).
+
+9) Allow hotplate to cool to room temperature before removing wafer. Thermal shocks are said to stress the SU-8.
+
+10) Test the pre-bake by lightly tapping the surface of the SU-8 with your wafer holders or tweezers. If it doesn't feel sticky or make a dent then it should be done. If sticky, ramp temperature back to 95°C for 2-4 minutes and repeat.
+
+11) Optional: allow wafer to rest 10-25 minutes. This is said to further reduce the chances that the SU-8 will stick to the mask. 
+
+
+Expose Wafer/SU-8
+-----------------
+0) Turn hotplate to 65°C for post-exposure bake.
+
+1) Turn on compressed air and N₂ switches on the mask aligner, then turn on lamp power supply. Press lamp igniter button until "lamp on" LED is on. Let lamp warm up for at least 15 minutes.
+
+2) Turn on mask aligner at its main control panel.
+
+3) Install a clear 4×4 glass in mask holder, turn on the vacuum to hold the glass (via the "vacuum" button on the control panel) and place the long-pass UV filter from the Pincus lab box in the indentation at the top of the mask holder.
+
+4) Remove the chuck and place the UV meter in the indentation. Turn the UV meter on, zero it out, and switch it to "peak hold" mode. Expose for ~30 seconds, and measure  measure light intensity (mW/cm²) of the aligner.
+
+5) Divide the desired exposure does in mJ/cm² by the light intensity to obtain exposure time in seconds. (Joules = Watts * seconds.) If using the UV filter, multiply required dose by 1.25. (Note that exposure doses above are for Si wafers. Multiply by 1.5 for glass substrates.)
+
+Current standard Pincus lab protocol for 75 µm SU-8 is to use 150 mJ/cm² as the base exposure, translating to 187.5 mJ/cm² with the UV filter.
+
+6) Replace the chuck and put the resist coated wafer on it. Remove the long-pass filter and mask holder, and turn off the vacuum to release the glass plate. Replace with the chrome mask, turn the vacuum back on, and replace the mask holder and the long-pass filter. The side of the quartz glass on which the chrome mask is patterned should be placed into contact with the wafer. In the correct orientation, the darkened side of the chrome mask faces the wafer, and the reflective side faces up, visible through the mask holder.
+
+7) Make sure "contact" paddle (on left side of aligner) is not at the contact setting, and slide the wafer in. Ensure that the "separation" slider is not on "separation" mode. (It should be pushed back.) Watching the wafer, move the paddle to "contact" (back) slowly. Ensure that the mask and wafer do not contact (watch from side) -- if necessary, lower the wafer using the knob at the front of the aligner. Once the contact paddle is fully engaged, raise the wafer with the knob to finger-tightness. (This procedure ensures that masks aren't broken by too rapidly crunching a wafer against them.)
+
+8) For soft contact, make sure the "soft contact" switch is illuminated (if not, press the button), and the ST/HP switch has "ST" illuminated. If hard contact is desired, turn off the soft contact switch, and make sure that the "ST" lamp is illuminated. If "vacuum contact" is desired, make sure the vacuum chuck (with silicone o-ring) is used, the "soft contact" switch is off, and the ST/HP switch has the "HP" illuminated. 
+
+9) Set the desired time into the exposure control knob (make sure the smaller units knob is as expected), and press "expose" to expose the photoresist using the time calculated.
+
+10) Remove the wafer from the mask using vacuum force to keep the wafer on the chuck instead of sticking to the mask. Press and hold the small button on the chuck trolley to apply vacuum, and then move the contact paddle to the forward position. Slide the chuck out and remove the wafer.
+
+11) If the wafer is stuck to the mask, gently use a razor blade to prise the wafer up, and then slide tweezers into the gap. Repeat variously around the edge of the wafer until the wafer comes free. If SU-8 is stuck to the mask, it can be cleaned off with SU-8 developer followed by an isopropanol wash (see below).
+
+12) Turn off the mask aligner at the main panel, then turn off the lamp power supply. Wait at least 5 minutes to turn off the compressed air and N₂ switches (used to cool the lamp).
+
+
+Develop SU-8
+------------
+1) Immediately perform post-exposure bake at 65°C and 95°C for the specified times above. Optional: increase 95°C time by up to 1.5×.
+
+Current standard Pincus lab protocol for 75 µm SU-8 is to bake at 65°C for 2 minutes and 95°C for 11 minutes.
+
+Midway through the post-exposure bake, turn off the air and N₂ to the mask aligner (see above).
+
+2) Allow the wafer to cool to room temperature on the hotplate.
+
+3) Develop the SU-8 in developer solution with slow/moderate agitation/swirling for the time listed above. Fill a medium-sized container 1/3 full of developer and lift the edges of the wafer in and out to allow developer to clean off excess photoresist. In addition, use a squeeze-bottle containing developer to spray the smaller features to make sure it reaches into the smaller areas.
+
+Current standard Pincus lab protocol for 75 µm SU-8 is to develop for 7 minutes.
+
+4) Test for development: spray wafer with isopropanol. If there is a white film on the wafer, place it back in the developer.
+
+5) Rinse in *fresh* developer for 1 minute.
+
+6) Rinse wafer in isopropanol for 30 seconds and blow dry with N₂.
+
+7) Inspect wafer with microscope.
+
+15) Optional: hard bake the resist at 150°C for 15-30 minutes. Especially useful if there are small cracks in the SU-8 (usually near edges and corners), but said to increase risk of SU-8 delamination if not well optimized. Ramping from room temperature up and down may help.
+
+Current Pincus lab protocol is to skip the hard-bake, though this is under discussion.
+
+
+Silanize Wafer
+--------------
+This step is performed in the Pincus lab.
+
+1) Place the SU-8  wafer in an open Petri dish. Place with 2-3 drops (use pipette) of the silanizing agent (tridecafluoro-1,1,2,2-tetrahydrooctyl trichlorosilane) in the cap of an Eppendorf tube, place the cap in the other half of the petri dish. Put both petri dish halves in the "Silanes" vacuum desiccator.
+
+2) Attach the desiccator to a vacuum hose on the hood vacuum port. Open the vacuum valve. Leave the wafer under vacuum for 30 minutes, and then close the vacuum source. Leave under vacuum for at least 30 minutes more, or overnight.
+
+3) It's best to keep the wafer covered in PDMS to keep the silane from evaporating off, so immediately cover the wafer in PDMS and bake, following the desired protocol for making PDMS appropriate for the device in question.
+

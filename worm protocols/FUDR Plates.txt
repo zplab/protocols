@@ -1,0 +1,26 @@
+FUDR Plates
+===========
+
+Author: Willie Zhang, Zachary Pincus
+Date: 2018-03-14
+http://zplab.wustl.edu
+
+
+FUDR, or 5-fluoro-2'-deoxyuridine, is a DNA synthesis inhibitor that is used to sterilize C. elegans.
+
+Stock Solution:
+The final concentration of FUDR for use on plates is 40 μM, and we want to make a 400× solution, so we are trying to make a 400 * 40 μM = 16 mM solution. The molecular weight of FUDR is 246.19 g/mol, so x mg of FUDR (powder) and x**1000/(246.19*16) = 0.2538*x mL of water will make the stock solution we want.
+    In short:
+        x mg of powdered FUDR
+        0.2538*x mL of water
+    makes a 400× stock solution.
+
+
+Best usage:
+Add to NGM-agar (as per basic worm book methods) after cooling, with the cholesterol and salts, and then pour plates.
+
+Dodgier, but works :
+Add FUDR stock to pre-seeded plates in small droplets around the circumference of the bacterial lawn. The volume of 6 cm plates is ~10 mL and for 10 cm plates is ~27 mL, so  25 μL or 69 μL of the 400× stock should be deposited on 6 cm or 10 cm plates, respectively. After pipetting, at least 24 hours should be allowed for the FUDR to diffuse completely; longer is better (*).
+
+Notes:
+(*) A small sugar or amino acid typically has a diffusion coefficient on the order of 1e-5 cm^2/s in water. So, over 24 hours, the mean squared displacement of such a molecule in three dimensions will be 24*60*60 * 1e-5 * 6 ≈5.2 cm^2, giving an RMSD of ≈2.3 cm. Accounting for slower diffusion in agar, and larger molecules, a reasonable estimate is that, within a day, a small molecule like FUDR will diffuse evenly throughout a sphere with a radius of at least 1 cm. So if the FUDR droplets are about 1 cm apart and the gel isn't thicker than 1 cm, everything should be more or less fully diffused by 24 hours.

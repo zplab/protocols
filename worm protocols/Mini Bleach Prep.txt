@@ -1,0 +1,33 @@
+Small-Scale Bleach Prep
+=======================
+ 
+Author: Zachary Pincus
+Date: 2014-01-10
+http://zplab.wustl.edu
+
+
+1) Wash plates in M9 (+ 0.02% tween, optionally, to keep worms from sticking to the pipette tips), collect in a 2 mL tube.
+
+2) Allow gravid worms to settle by gravity; aspirate (note 1) to 350 µL. Optionally wash plates again, repeating steps 1 and 2.
+
+3) Add 50 µL 5M NaOH and 100 µL fresh bleach (note 2).
+
+4) Vortex periodically (every 30-60 sec) until worms are breaking apart and dissolving. (No more than 5 minutes! And often less.)
+
+5) Add M9 to 2 mL, spin down in toy centrifuge 30s, and aspirate supernatant.
+
+6) Repeat step 5, for five spin/aspirate steps in total. To resuspend the pellet, add 1 mL M9, vortex to break the pellet up, look at the tube under the scope to make sure you still see good eggs, and then add more M9 to 2 mL. 
+
+7) After the fifth spin/aspirate step, add synchronization medium (note 3) to 1 mL, vortex, transfer to a new 2 mL tube, and nutate overnight.
+
+8) Assay yield by diluting 10-20 µL of the overnight synchronization medium in M9. Pipette 5-10 1 µL drops onto a glass slide and count the total number of thrashing L1s. From this the total yield can be estimated. From from 3 small (6 cm) plates with ~300 gravid adults each it should be possible to get up to 20-30,000 L1s.
+
+Notes:
+(1) Use a P-1000 to do this and all other aspirations. This is much gentler than vacuum and easier to recover a lost pellet. In any case, the pellet is nicer and tighter than the pellet from a 15 mL tube in the clinical centrifuge.
+
+(2) Fresh bleach is critical. Use bleach from the container: do not aliquot bleach. If the container is more than a few months old, get a new one.
+
+(3) We often use M9 as the synchronization medium, but anecdotally the Schedl lab has found that the animals are happier being starved overnight in S-basal with cholesterol.
+
+
+

@@ -1,0 +1,167 @@
+Running Worm Image Analysis on CHPC Cluster
+===========================================
+Author: Drew Sinha
+Date: 2018-01-11
+
+Cluster Computing at the CHPC
+---------------------------------------------------------------------
+Summary: This provides a brief overview of a simple pipeline for using the CPHC cluster to do image processing (using Willie Zhang's worm finding code as the prototypic task). By the end of this overview, the reader will be able to upload/download files to/from the cluster and use pre-built tools to configure and submit tasks to the cluster as parallel "jobs." The reader should be familiar with the following tools:
+
+
+Linux sh/command line
+---------------------------------------------------------------------
+- ssh secure shell tool
+- rsync: a useful tool for synchronizing the contents of two directories; in particular, the user should be familiar with the following options: -r (recursive synching), -i (provide a final summary of updates), -v (verbose output at console), -n ("dry-run" functionality; simply enumerates changes without doing any copying), --size-only (filter to only move files whose size is appreciably different)
+- Job runner *q*ueue commands: The following commands are used to interact with the cluster job handler - 
+    qsub: Submit a job to the cluster contained in an appropriate .sh shell file
+    qstat: Check the current job queue on the cluster to get the staus
+- nano/vim/emacs (optional command line text editors, but useful for debugging and checking remote output data files)
+
+
+Python tools
+---------------------------------------------------------------------
+- Willie's worm finding and data analysis code (distributed as the folder wzhang; available from the zplab GitHub)
+- cluster_tools.py: A simple Python module for automating job script shell file generation and coordinating parallel processing on separate animals simultaneously
+
+
+0. Setting up the work environment with ssh-keys
+---------------------------------------------------------------------
+To communicate between local lab computers and the computing units at the CHPC (computers or "nodes") and up/download files, we will be using ssh heavily. To prevent the OS from needing to repeatedly request credentials (really bad when copying over multiple directories of data), one can use built-in tools to make authentication seamless. This consists of generating a pair of authentication files (private/public key pair) that will tie the computer you use locally to the remote conputer.
+
+
+    0.1. Check for previously created keys. 
+        Use the following command on your local computer to check the ssh directory for keys:
+
+            >> ls ~/.ssh
+
+        If the command executes without error and shows files such as id_..., you have made a key pair already for this computer. 
+
+
+    0.2. Create a key pair     
+        Use the following command on your local computer:
+            >> ssh-keygen -t rsa
+
+        You will be prompted for a location to save the keys. It is advised to use the default name/location.
+        You will then be prompted to enter a password. It is advised not to enter a password to keep authentication seamless.
+
+
+    0.3. Copy the public key over to the cluster.
+        Use the command on your local computer:
+            >> ssh-copy-id -i KEY_FILE_LOCATION REMOTE_USERNAME@login01.chpc.wustl.edu
+
+        For instance, using the default settings as described above, this command looks like
+
+            >> ssh-copy-id -i /home/drew/.ssh/id_rsa.pub sinhad@login01.chpc.wustl.edu
+
+
+    0.4 Check that the keys work by ssh'ing to the cluster. 
+        If they work, you should logon without any request for password.
+
+
+1. Copying over files to the cluster for processing
+---------------------------------------------------------------------
+
+On the cluster, we will be placing our data in a convenient location for all nodes to access it; this location is the /scratch partition, which is high-speed shared memory. Each user has a /scratch/$USER directory, but shares disk space with all the users in the zplab group (currently a total disk space of 4TB). 
+
+    1.1. Check whether there is enough space available to transfer your files. 
+        
+        First, use the following command will check how much space the zplab group is currently using on the scratch partition.
+            >> lfs quota -h -g zplab /scratch
+
+        If there is substantial disk space being used, then contact Zach or other lab members that are currently running jobs on the cluster. 
+
+        Next, you will want to check whether any other individual has a job running currently (that may use up available resources as it finishes). 
+        Use the qstat command to check if different users have jobs currently running.
+
+            >> qstat -u USER1, USER2, 
+
+
+    1.2. Transfer files up to the cluster using rsync with the standard scope acquisition directory structure. 
+        
+        For image processing, the software we will be using assumes a single directory holding all of the information for a given experiment with the same folder structure as on the scope acquisition computers. Briefly, you will want transfer files with this folder structure to the CHPC cluster using the dtn01 node, which is optimized for file handling and transfer (as opposed to the standard login nodes). 
+
+        First, do a dry-run to see what will be transferred by supplying the -n flag:
+            >> rsync -rin --size-only SOURCE_DIRECTORY(/) REMOTE_USERNAME@dtn01.chpc.wustl.edu:/scratch/REMOTE_USERNAME
+        
+        Note that leaving off a slash after SOURCE_DIRECTORY copies over the directory as well, where as ading a slash will copy over the contents of the directory to the remote directory. Consider using the -v flag for additional information on the transfer of individual files if necessary or desired. 
+
+        Finally, do the transfer using the same command without the -n flag:
+            >> rsync -ri --size-only SOURCE_DIRECTORY(/) REMOTE_USERNAME@dtn01.chpc.wustl.edu:/scratch/REMOTE_USERNAME
+
+
+2. Configure the image processing for an experiment and submit the task to the cluster.
+---------------------------------------------------------------------
+
+The task ("job") that will be performed on the cluster is image processing for worm finding (as written by Willie Zhang) for multiple individuals in a standard lifespan acquisition. Because processing for a single animal is independent of information from any other animal, this task naturally breaks into subtasks in which each animal is processed separately as its own job. The cluster's job runner provides functionality for running such tasks in parallel through job arrays. Job arrays are collections of instances of the same job; each instance has a unique id that can be used to direct the instance to work on a slightly different task. The cluster_tools Python script creates a shell script defining the job of interest using this job array functionality and uses each instance's id to work on a unique animal subdirectory. 
+
+    2.1 Edit the cluster_tools.py script
+
+        The user will want to modify the file_dir and work_dir variables in a separate copy of cluster_tools to point to user directories (and not the default directories in /scratch/sinhad; more information in comments in the cluster_tools script). In addition, the user will want to modify the parameters of the job script (either in cluster_tools or the generated job_script).
+
+        Edit the cluster_tools.py script to include your personal directories. In the # Constants part of the file alter the following variables:
+
+            file_dir = '/home/n.laird/'   # Where files will be output for running jobs
+            work_dir = '/scratch/n.laird/work_dir/'  # Where mask data will be aved
+            human_dir = '/home/n.laird/20180111_utilities_fordistribution' # Where data for texture classifiers are stored
+
+            NOTE: the human_dir variable could be changed to utilities_dir depending on where/who you got your cluster_tools.py file from
+
+        In the configure_pipeline function edit the following variables to include your directories/personal info.
+            
+            #PBS -M drew.sinha@wustl.edu    (-> Email for notifications)
+            #PBS -d /scratch/sinhad/    (-> Directory to start in)
+            #PBS -e /scratch/sinhad/job_log_files/  (-> Directories for saving job error log files)
+            #PBS -o /scratch/sinhad/job_log_files/  (-> Directories for saving job output log files)
+
+        Save the file and you are ready to begin the image processing step!
+
+
+    2.2. Configure the image processing task and generate a job acquisition script.
+    
+        The code used this step (cluster_tools.configure_pipeline function) does some initial post-acquisition cleaning of experiment directories and pre-processsing tasks to prepare the data directory for running parallel tasks, then generates a manifest of all the animals to be processed (stored in enumerated_animals.json) and shell script that will be submitted to the cluster via qsub. This latter step is done with a template filled-in for job parameters.
+
+        Use cluster_tools to prepare the data directory for running tasks.
+        One can run this command from the linux shell via standard Python syntax and the 'configure' flag:
+            >>python cluster_tools.py configure EXPT_DIR1 [EXPT_DIR2 ...]
+
+        where one or more directories of experimental data can be provided. This will save the job_script and manifest at the path defined by the variable "file_dir" in cluster_tools. 
+        NOTE: delete any trailing slashes in the EXPT_DIR
+        NOTE: when running scripts, use full file paths rather than relative file paths
+
+    2.3. Submit the job to the cluster. 
+
+        To submit the job to the cluster, use the following command with qsub
+            >> qsub JOB_SCRIPT
+
+        where JOB_SCRIPT is the path to the job_script as defined in step (2.1). The output of this command will be a response of the form:
+            1589991.mgt2.cluster
+
+        where the first number (i.e. 1589991) is a unique identifier for the job ("job number").
+
+        One can check the status of jobs that they have submitted using the command
+            >> qstat -u $USER
+
+        A job that is active will be listed in the output with the letter Q(ueued), R(unning), or C(omplete). If a job errors out for any reason, it will either display a E(rror) or will be not enumerated in the output of qstat.
+
+Error and Output Log Notes:
+When each job is created, a set of error and output log files are generated for the user's reference. Their location is specified in job script (on the lines with a '-e' and '-o', resp.) and their naming follows the convention JOB_NAME.[o,e]JOB_NUM-ARRAYNUM where JOB_NAME is specified in the job script (default is process_animals), JOB_NUM is the job number provided when the job was submitted, and ARRAYNUM is the unique ID for the nth parallel job in the job array for this job. The output and error files provide useful feedback for troubleshooting and benchmarking the task (including total resources and time for a given single instantiation of the job), respectively. They can be viewed remotely in the terminal with nano, vim, or emacs; alternatively, the scratch partition can be mounted locally (using the sshfs utility; not covered here) and files can be browsed using the editor on the local computer.
+
+    An example error log name: process_animals.e3885569-1
+    An example output log name: process_animals.o3885569-35
+
+
+3. Bring data back from the cluster
+---------------------------------------------------------------------
+After processing the images on the cluster, bring them back to your local desktop for additional analysis.
+Once image processing is done, use the rsync command to synchronize BOTH the experimental directories and working directories holding final masks.
+    >> INSERT CODE EXAMPLE HERE
+
+
+4. Clear data from the cluster
+---------------------------------------------------------------------
+Since the zplab group has only 4 TB of scratch space, each user should make best attempts at keeping disk usage to a minimum when not running jobs on the cluster. Deleting data can be done with the rm command (see man-pages). Prior to deleting data once-and-for-all, it is encouraged to do a dry-run rsync with local lab computers to do check that processed data has been safely transferred to more permanent storage.
+    >> INSERT CODE EXAMPLE HERE
+
+TODO: Things for improvement of the pipeline
+    - Script for automating qstat for all zplab members
+    - Clean up environment/directories for saving stuff.

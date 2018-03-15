@@ -1,0 +1,37 @@
+Purification of L1s by Filtration
+=================================
+
+Author: Zachary Pincus
+Date: 2018-03-14
+http://zplab.wustl.edu
+
+
+Supplies:
+* Nylon Net Filters 11 µm (Millipore #NY1102500)
+* 25mM Easy Pressure Syringe Filter Holder (Pall Life Sciences #4320)
+* 3ml syringe
+* Flat filter forceps
+* Microfuge tube for collection
+
+Note:  11 µm filters can allow L2s to pass. Sizes can be optimized for other ages, or for more L1 specificity: http://wormbook.org/wli/wbg4.1p16/
+
+Steps:
+1) Wash worms off plate using 1.5 - 2 mL of M9 or S-basal, etc.  If OP50 needs to be removed, spin worms to pellet, remove supernatant and rinse with ~1.5 mL of fresh buffer. Adding 0.01 - 0.1% Triton X-100 helps remove the worms and prevents adherence to pipette tips. (http://wbg.wormbook.org/2010/06/10/triton-x-decreases-adherence-of-c-elegans-to-pipette-tips-in-liquid-medium/ ) 
+
+2) Unscrew the Easy Pressure Syringe Filter Holder and remove the stopper and plug on either side of the holder.
+
+3) Remove brown gasket
+
+4) Using forceps, remove blue separating paper and pick up an 11 micron filter and place it on the metal mesh surface of the syringe filter holder.
+
+5) Place brown gasket on top of the filter paper, then screw on until just tight.
+
+6) Get out a clean microfuge tube to collect the filtered L1 worms. 
+
+7)A ttach the syringe to the syringe filter holder and put filter holder over your collection tube.
+
+8) Take plunger out of the 3ml syringe and dump or pipet in suspended worms. Wiggle plunger down a bit and then gently press plunger completely down, collecting L1s in the clean empty microfuge tube.
+
+9) To Clean:  Unscrew filter holder.  Remove filter paper and throw away. Close back up and run ethanol and then water through the filter holder 
+
+10) Take filter holder apart and place on paper towel to dry, put away when dry.

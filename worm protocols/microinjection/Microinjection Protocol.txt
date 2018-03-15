@@ -1,0 +1,138 @@
+Microinjection of C. elegans
+============================
+
+Authors: Michael Koelle (1994-08-23), edited by Erik Andersen (2009-08-10) and Travis Mazer (2016-05-11)
+http://zplab.wustl.edu
+
+
+You will have a couple frustrating sessions when you first attempt this technique. Everyone seems to master injection after a few days, and it works quickly and reliably once you have some experience.
+
+1. Materials
+a) Agarose pads
+Make a lot of these at a time; they last forever.
+1. Using a Pasteur pipette, drop melted 2% agarose in sterile water on a 24x50 mm coverslip.
+2. Drop a second coverslip on top, which will flatten the agarose into a thin pad. Try to avoid air bubbles, but a few won't hurt anything.
+3. When the agarose has hardened (> 5 sec) slide off the top coverslip.
+4. Breathe on the coverslip to see on what side the pad stuck. Use this top coverslip as the bottom coverslip to make the next pad; its thin coating of agarose will make the pad stick to it instead of the fresh top coverslip.
+
+Note: This process can be made into an assembly line by lining up many coverslips on the edge of a bench (so you can quickly pick them up) and an equal number of coverslips perpendicular to the first set behind them. Spot the perpendicular coverslip, pick up the one at the edge of the bench and drop it on top. Drop on the next coverslip to repeat on down the line. You can make 200 coverslips in about a half an hour.
+
+5. Place the coverslips flat in a box and cover the box with aluminum foil to dry. The box can be left out on the bench overnight, or bake in an oven at 65°C for 1 hour, or bake in an 80°C oven for 15 min.
+6. Once dried, you can store the pads in the original coverslip box.
+
+b) 10X microinjection buffer
+20 % polyethylene glycol, molecular weight 6000-8000 
+200 mM potassium phosphate, pH 7.5
+30 mM potassium citrate, pH 7.5
+1. Mix 10 mL 1M potassium phosphate pH 7.5, 5 mL 300 mM K citrate, pH 7.5, 10 g PEG, and ~25 mL of sterile water
+2. Stir for about 10 minutes to dissolve the PEG
+3. Add more water to a final volume of 50 mL.
+
+Note: PEG is near its solubility limit, so the solution may remain cloudy until the solution is filled to 50 mL with water.
+
+Making the buffers:
+1 M potassium phosphate pH 7.5
+8.7g K2HPO4 + 50mL H2O = 1M solution 
+6.8g KH2PO4 + 50mL H2O = 1M solution
+mix 32.4mL 1M K2HPO4 + 7.6mL1M KH2PO4 to get pH 7.5
+
+300 mM K citrate, pH 7.5
+6.3 g citric acid + ~70 mL sterile water 
+add HCl or 10N KOH to pH 7.5
+sterile water to 100 mL
+  
+c) Recovery buffer
+M9
+
+d) Microinjection needles
+We use glass filaments. Keep these clean, always immediately recap the tube after removing a filament.
+
+e) Needle puller
+Needle puller is on the 9th floor in Nonet Lab – Do not use until given permission/training by either Scott Dour or Mike Nonet
+
+Bring a pen to record your use of the puller on the yellow notepad near the puller
+
+(1) Turn on puller with power switch on left side, press “0” for program 0
+(2) Check pressure setting, should be at 500, if not, adjust (double check with Scott Dour, this can change)
+(3) Open lid, carefully insert glass tube in the left sliding holder, with the left most end of the tube lining up with the red line drawn on the holder – do not bring glass tube into contact with filament, notify Dour or Nonet immediately if you do
+(4) Screw tight and press down on the panels behind both holders to free them
+(5) Pull holders together using the small handles and screw tight right holder onto tube
+(6) Close lid, press “Pull” - Filament should glow 3 times before needles are pulled
+(7) Open lid and remove needles
+(8) When done, close lid, turn power switch off, and replace plastic cover
+
+f) Microinjection oil
+We use PDMS, in practice appears less harsh than halocarbon oil on the worms (Mazer)
+
+2. Making the DNA solution
+The goal is to have clean DNA buffered at pH 7.4 in a K+ buffer, with not too much Na+ in it. DNA from Qiagen columns is good. It is reported that fewer transformants are obtained if the solution is not buffered with K+.
+
+Note: DNA concentration drastically affects the results of a transformation experiment. Some plasmids, cosmids, or fosmids are lethal at high concentrations. Start with plasmids at around 80 μg/mL and cosmids or fosmids at around 20 μg/mL. We also use carrier DNA to make the transgene arrays more complex. DNA ladder or Arabidopsis genomic DNA at 100 μg/mL can be used. Coinjection markers help identify transformants. There are many coinjection markers. Here is a partial list: pRF4 (contains the dominant rol-6 mutation), pL15EK (lin-15AB rescuing construct), myo-2::RFP or myo-2::GFP (red or green pharynges, respectively – use at 5 μg/mL), pTG96 (sur-5::GFP, expressed in all somatic cells – use at 20 μg/mL), ttx-3::GFP (expressed in one cell in the head), unc- 119 rescuing plasmid, myo-3::RFP or myo-3::GFP (red or green body wall muscle, respectively – use at 5 μg/mL).
+
+3. Setting up the scope, loading the needle, mounting, and breaking the needle.
+a) Set up the scope:
+Our microscope has 5X, 10X, 20x and 40X objectives. Mounted on the scope is a Narishige micromanipulator and manipulator. Pressure is generated by an in-house made pressure regulator. Turn on the microscope using the switch to the right of the body. Turn on the regulator using the switch on the back. The pressure should be set automatically. P1 is set to 100 PSI (clean pressure); P2 is set to 30 PSI (injection pressure); P3 is set to 5 PSI (resting pressure). The foot pedal is set to inject when depressed. There is also an injection button on the regulator. If the needle gets clogged, you can use the clean button to blast high pressure through the needle.
+
+b) Loading the needle:
+1. Before loading the needle, transfer the DNA solution to a filter tube and centrifuge the DNA solution for 30-60 seconds with a the small desktop centrifuges to filter particulate matter that might clog the needle.
+2. Remove the filter and place the pulled needles with the tip facing up into the tube to allow the solution to reach the tip via capillary action. This can take a few minutes.
+
+c) Mount the needle on the scope:
+1. Remove the old needle by unscrewing the assembly that holds the needle.
+2. Insert your needle with the back end first so as not the break the tip. 
+3. Tighten the needle by screwing the assembly onto the manipulator arm.
+4. Turn the three knobs on the fine and coarse control of the micromanipulator to the middle of their range.
+5. Using the course controls (knobs on the part of the micromanipulator mounted on the stage), move the needle tip left/right and forward/backward until it is just above the objective. You will see it glowing in the light shining down from the condenser.
+6. Lower the needle using the coarse Z control into the oil. Be careful to not go too far down. Look for slight displacement of the oil.
+7. Look at 10X to move the breaking bar (described below) and the needle to the middle of the view. 8. Change to 40X and repeat.
+
+d) Breaking the needle:
+1. Over a Bunsen burner, draw out the same 10 μL micropipette used earlier in the same way.
+2. Break a ~5 cm piece of the drawn out part onto a 24x50 mm coverslip, and put a drop of PDMS on top to hold the breaking bar in place on the coverslip.
+3. Put the breaking bar coverslip on the microscope stage so that the breaking bar is in the middle of the 10X and 40X views.
+4. Focus on the pulled out micropipette (see a sharp black line on the edge when you are focused on the middle).
+5. Using the fine controls, carefully lower the injection needle towards the stage until it is in the same focal plane as the micropipette. At this low power, you can't see the actual tip, so you may have to try the 40X objective.
+6. Using the fine controls or the gliding stage (your preference), slowly move the injection needle left until it touches the micropipette, and then pull it back.
+7. To check the needle, press the foot pedal to look for flow out of the needle. You should see rapid laminar flow out of the needle and back towards the shaft using pressure P2, but no flow out at resting pressure. If there is no flow when you press the pedal, the needle isn't broken. Try again. You will have to see by experience what the optimal flow rate is. You want to be able to flood the gonad in about 3 seconds of flow at P2.
+8. When done breaking the needle, use the fine control to lift the needle up out of the oil in preparation for injecting.
+
+4. Mounting worms on an injection pad
+
+1. Take out an agarose pad and breathe on it (about 1 long breath) to moisten it. If it is too dry, the worms will dry out and die - too wet and the worms won't stick well.
+2. Place a drop of PDMS on the pad. Lay the cover slip on the top of an upside down lid of a small worm plate with two strips of lab tape across it. The pad should be at about the same height as the worms on a plate so you don't have to focus around too much when switching back and forth.
+3. Pick some worms from the bacterial lawn to a part of the plate without bacteria. Most people like to use adults 24-36 hours post-L4. These animals have large robust gonads.
+4. Using a worm pick with oil as glue, transfer adult hermaphrodites from off the lawn to the oil drop on the pad. If there is still adhering bacteria, push the worms around in the oil with a pick until the bacteria come off.
+Note: As a beginner, stick a single animal on a pad. The trick is to stick the animals down in the same orientation so that each animalʼs vulva is pointed to the same side. You don't want the syncytial gonad to be on top or underneath the animal. When the animal is in the oil, the syncytial gonad is visible as two clear areas towards the anterior and posterior of the animal. To stick the animal right, wait until it is floating in the oil so that it's body flexures go sideways, not up and down, and pat the animal down on the agarose pad with your pick until it is stuck to the pad. Avoid stroking or patting the animal on the head, which can kill it. Ideally, the animal will be fully immobilized except for it's head, which will still be free and wiggling. The animals stick best when they first touch the pad. If you fail to stick them on the first try, the pad will not stick to the same part of the animal again. Practice sticking down a whole set of animals in a line in the same orientation for assembly line injecting. Once the animals are in the oil, work reasonably fast to get the procedure over with before the animals dehydrate (roughly ten minutes).
+
+5. Injecting
+
+1. Raise the injection needle off of the stage to allow room to put the injection pad with worms on the floating stage.
+2. Using the 10X objective find the worm, make sure it is in the correct orientation (vulva away from the needle). You can move or rotate the entire stage to move the worm, although some like to move the coverslip itself. It is best to have the worm at a 45° angle to the needle; this maximizes the path length for the needle inside the gonad, helping to make sure you get the tip in the gonad instead of going all the way through and out the other side.
+3. Carefully lower the needle into the focal plane with the fine adjuster. At this point, you only need to move the needle up and down with the micromanipulator; you always move the worm, not the needle, up/down left/right, by moving the whole stage.
+4. Change to the 40X objective and focus on a syncytial gonad arm. This structure looks like a sausage-shaped clear area surrounded by nice round nuclei. The clear area has tiny speckles. See Figure 1.
+5. Focus on the center of the gonad so that you see a nice row of nuclei on either side of the sausage. Using the fine adjuster, move the needle up/down until its very tip is in focus.
+6. Gently move the worm so that it is pressing against the needle at a point where the syncytial gonad is pressed up against the body wall, and so that the needle tip will end up inside the gonad after it penetrates the body wall.
+7. There are many techniques to penetrate the body wall and enter the gonad. Here are two: (1) use your right index finger to gently tap the micromanipulator on the little box with the ball joint in it (just above where the arm the needle is on is attached). This vibrates the needle a little so that it punctures the worm. (2) slowly move the floating stage until the needle presses up against the body wall. Push slightly harder to enter the gonad. Hopefully, the tip of the needle is in the gonad now.
+8. Press the pedal to start the flow of DNA solution. If you're in the gonad it should be obvious; as the gonad is flooded it bloats like you're filling a sausage, and you can sometimes see the nuclei in the syncytium reacting to the flow. You want to put as much liquid in the gonad as possible; hopefully it will flow all the way around turn of the gonad. A good rule of thumb is to inject until you see a good amount of liquid has made the turn and has flowed into the proximal gonad, and then to shut off the flow.
+9. To stop the flow press the pedal again and move the animal away to get the needle out. Mello et al. (EMBO J. 10: 3959-3970, 1991) show excellent photographs of a gonadal flood.
+
+Note: Usually one gonad arm is much easier to see than the other, so some people only inject the easy gonad arm. Others try to inject both. If you miss the gonad, you will see liquid filling the pseudocoelom. Usually, the animal will survive, and you can just try again. It is surprisingly hard to kill the worm by jabbing and injecting it incorrectly.
+
+10. After you finish a worm, use the fine controls to lift the needle out of the oil before moving the stage to find a new worm, or removing the pad.
+
+Note: Eventually needles tend to clog and must be changed.
+
+6. Recovery
+
+1. Put the pad under the dissecting scope (on the inverted plate lid) and using a micropipetter place a drop of recovery buffer on the oil drop above the worm.
+2. Then poke a worm pick straight down through the recovery buffer and oil to touch the agarose pad next to the worm. This action will form a channel, and the recovery buffer will form a layer underneath the oil in which the worm will float.
+3. Use an eyelash pick to transfer the worms in recovery buffer onto a fresh plate.
+
+Note: I put many worms (from the same injection) onto the same plate.
+
+7. Results
+
+1. The next day after injecting, pick the injected animals to separate plates. I pick three to five animals to a plate.
+2. Three days later, score the progeny of the injected worms for the coinjection marker phenotype. Each animal in the F1 is considered an independent transformant (even if they come from the same injected P0). Therefore, each F1 should be picked to a different plate to try to get independent lines.
+
+Note: Typically, people inject 10-30 P0ʼs, and you should expect to get 0-300 F1 transformants. Of the F1 transformants, typically about 5-70% will transmit the array, allowing a line to be established. These lines transmit the array to 30-100% of their progeny. There is variation among lines transformed with the same DNA. For example, only a fraction of lines transformed with a cosmid/co- injection marker might give rescue of a mutant phenotype, and the strength of the rescue (the penetrance and/or expressivity) will vary among lines that show rescue. For a conservative analysis of gene function, one should look at six lines before they tentatively believe any result. Additionally, GFP fusion constructs can be used to identify the tissue or cell where your favorite gene is expressed. Transgene arrays are composed of concatemers of whatever was injected in random order, orientation, and composition. For example, transgenes can combine the co-injection marker promoter to GFP. Be careful when interpreting transgenic lines, either rescue or expression. Some lines transmit at only a few percent per generation. The frequency of transmission varies from animal to animal. Keep lines with low transmission, as they are more useful than high transmitting lines for integrating the transgene (integration creates 100% transmission). Also, transmission, rescue, and expression from some transgenes change over time, likely due to changes in chromatin states.
