@@ -44,10 +44,6 @@ autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 
-bindkey -e
-bindkey "${key[Up]}" history-beginning-search-backward-end
-bindkey "${key[Down]}" history-beginning-search-forward-end
-
 autoload -U colors && colors
 prompt="%{$bold_color$fg[red]%}[%{$fg[blue]%}%n@%m:%{$fg[green]%}%25<..<%~%<<%{$fg[red]%}]%{$fg[green]%}%(!.#.>)%{$reset_color%} "
 
@@ -63,16 +59,32 @@ export PATH=$ANACONDA_PATH:$PATH
 EOF
 ```
 
-- some OS-specific options.  
-    **On OS X:**
-    
-      echo "export CLICOLOR=1" >> ~/.zshrc
-      echo "export LSCOLORS='ExfxcxdxbxegedabagExEx'" >> ~/.zshrc
+- **For OS X** include these further options:
 
-    **On Linux:**
-    
-      echo "alias ls='ls --color=auto'" >> ~/.zshrc
+```
+cat >> ~/.zshrc << EOF
 
+bindkey -e
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
+
+export CLICOLOR=1
+export LSCOLORS='ExfxcxdxbxegedabagExEx'
+EOF
+```
+
+- **For linux** include these further options:
+
+```
+cat >> ~/.zshrc << EOF
+
+bindkey -e
+bindkey "${key[Up]}" history-beginning-search-backward-end
+bindkey "${key[Down]}" history-beginning-search-forward-end
+
+alias ls='ls --color=auto'
+EOF
+```
 
 ## 3. Set up a Python environment using Anaconda:
 - Download (miniconda for Python 3)[http://conda.pydata.org/miniconda.html]:  
