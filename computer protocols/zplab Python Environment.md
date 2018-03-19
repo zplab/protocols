@@ -106,7 +106,7 @@ EOF
 
     Here’s a [quick guide](http://conda.pydata.org/docs/test-drive.html) to Anaconda, though note that for basic use you don’t need to know any of this.
 
-- Set up the standard zplab python environment:
+- Install the basic suite of zplab tools into the root miniconda environment:
 
 ```
 cat > user_env.yml << EOF
