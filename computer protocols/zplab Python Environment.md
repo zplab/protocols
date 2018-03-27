@@ -106,7 +106,7 @@ EOF
 
     Here’s a [quick guide](http://conda.pydata.org/docs/test-drive.html) to Anaconda, though note that for basic use you don’t need to know any of this.
 
-- Install the basic suite of zplab tools into the root miniconda environment:
+- Install the basic suite of zplab tools into the root miniconda environment. Ignore any message about needing to activate the `root` environment: the root (aka `base`) environment is active by default.
 
 ```
 cat > user_env.yml << EOF
@@ -135,7 +135,7 @@ dependencies:
         - git+https://github.com/zplab/zplib
         - git+https://github.com/zplab/RisWidget
 EOF
-conda env update -f user_env.yml
+conda env update -n root -f user_env.yml
 rm user_env.yml
 ```
 
@@ -143,3 +143,17 @@ rm user_env.yml
 
       pip install --upgrade git+https://github.com/zplab/freeimage-py
     (for example) to upgrade freeimage-py.
+
+- Configure the ipython environment:
+
+```
+ipython profile create
+cat > .ipython/profile_default/ipython_config.py << EOF
+c.TerminalIPythonApp.display_banner = False
+c.TerminalInteractiveShell.confirm_exit = False
+c.TerminalInteractiveShell.display_completions = 'readlinelike'
+EOF
+```
+
+- If you are using a terminal with a light background, also do the following:
+      cat "c.InteractiveShell.colors = 'LightBG'" >> .ipython/profile_default/ipython_config.py
