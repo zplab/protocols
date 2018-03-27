@@ -156,4 +156,5 @@ EOF
 ```
 
 - If you are using a terminal with a light background, also do the following:
-      cat "c.InteractiveShell.colors = 'LightBG'" >> .ipython/profile_default/ipython_config.py
+
+      echo "c.InteractiveShell.colors = 'LightBG'" >> .ipython/profile_default/ipython_config.py
