@@ -115,7 +115,7 @@
            delete veto files = yes
         
         [purplearray]
-          path = /mnt/ARRAYNAME
+           path = /mnt/ARRAYNAME
            browseable = yes
            writeable = yes
            veto files = /._*/.DS_Store/

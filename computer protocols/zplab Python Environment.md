@@ -134,6 +134,7 @@ dependencies:
         - git+https://github.com/zplab/freeimage-py
         - git+https://github.com/zplab/zplib
         - git+https://github.com/zplab/RisWidget
+        - git+https://github.com/zplab/elegant
 EOF
 conda env update -n root -f user_env.yml
 rm user_env.yml

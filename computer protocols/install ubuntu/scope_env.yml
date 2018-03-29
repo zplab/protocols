@@ -28,3 +28,4 @@ dependencies:
         - git+https://github.com/zplab/SharedMemoryBuffer
         - git+https://github.com/zplab/IOTool#subdirectory=py
         - git+https://github.com/zplab/rpc-scope
+        - git+https://github.com/zplab/elegant
