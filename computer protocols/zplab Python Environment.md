@@ -33,7 +33,7 @@ Use the package manager to ensure that you have compilers installed (gcc or clan
 - Next, set up a `.zshrc` file:
 
 ```
-cat > ~/.zshrc << EOF
+cat > ~/.zshrc << 'EOF'
 setopt hist_ignore_dups
 setopt append_history
 HISTSIZE=100000
@@ -76,7 +76,7 @@ EOF
 - **For linux** include these further options:
 
 ```
-cat >> ~/.zshrc << EOF
+cat >> ~/.zshrc << 'EOF'
 
 bindkey -e
 bindkey "${key[Up]}" history-beginning-search-backward-end
@@ -86,8 +86,10 @@ alias ls='ls --color=auto'
 EOF
 ```
 
+- Now close your terminal window and open a new one to start using `zsh`. 
+
 ## 3. Set up a Python environment using Anaconda:
-- Download (miniconda for Python 3)[http://conda.pydata.org/miniconda.html]:  
+- Download [miniconda for Python 3](http://conda.pydata.org/miniconda.html):  
     **On OS X:**
     
       curl -O https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
