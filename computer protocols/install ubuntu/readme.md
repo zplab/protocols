@@ -186,6 +186,17 @@
         sudo conda env update -n root -f scope_env.yml
         ipython profile create
     Copy over `ipython_config.py` file to `~/.ipython/profile_default/ipython_config.py`
+    
+    Until zeromq 4.2.6 is released and available in conda, we need to custom build libzmq from github, to pick up some bugfixes:
+    
+        commit=889ac2eb3dcf29be1b7bdae93f216d30fd2b9dfb
+        curl -o libzmq.zip https://codeload.github.com/zeromq/libzmq/zip/$commit
+        unzip libzmq.zip && rm libzmq.zip
+        cd libzmq-$commit
+        ./autogen.sh && ./configure && make && make install
+        cd ..
+        rm -rf libzmq-$commit
+        pip install --no-binary pyzmq
 
 16. Install scope-server tools:
 

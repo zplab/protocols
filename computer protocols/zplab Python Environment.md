@@ -124,15 +124,14 @@ dependencies:
     - scikit-learn
     - pyopengl
     - cython
-    - pyzmq
     - cffi
     - pyfftw
-    - python-blosc
     - pip:
         - pyqt5
         - matplotlib
         - scikit-image
         - qtconsole
+        - celiagg
         - git+https://github.com/zplab/freeimage-py
         - git+https://github.com/zplab/zplib
         - git+https://github.com/zplab/RisWidget

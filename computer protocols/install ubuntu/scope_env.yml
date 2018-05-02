@@ -10,7 +10,6 @@ dependencies:
     - scikit-learn
     - pyopengl
     - cython
-    - pyzmq
     - cffi
     - pyfftw
     - python-daemon
@@ -21,6 +20,7 @@ dependencies:
         - matplotlib
         - scikit-image
         - qtconsole
+        - celiagg
         - PySDL2
         - git+https://github.com/zplab/freeimage-py
         - git+https://github.com/zplab/zplib
