@@ -5,6 +5,7 @@ http://zplab.wustl.edu
 
 ## DM6000 (zpl-scope)
 **Make sure to install appropriate excitation filter paddles in Spectra X.**
+
 [Semrock DAPI/FITC/TRITC](https://searchlight.semrock.com/?sid=403ba824-d370-4ac4-bed9-3e370472e0d7): labeled as "DFTr". Excitation filters to install: Semrock 386/23 (UV), Semrock 480/17 (Cyan), Semrock 556/20 (Green/Yellow).
 
 [Chroma DAPI/FITC/Texas Red](https://searchlight.semrock.com/?sid=225897c4-069f-44ce-838c-935660e5eaf4): labeled as "DFTx". Excitation filters to install: Semrock 390/40 (UV), Chroma 490/20 (Cyan), Chroma 572/35 (Green/Yellow).
