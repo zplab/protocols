@@ -196,7 +196,7 @@
         ./autogen.sh && ./configure && make && make install
         cd ..
         rm -rf libzmq-$commit
-        pip install --no-binary pyzmq
+        pip install pyzmq --no-binary pyzmq
 
 16. Install scope-server tools:
 
