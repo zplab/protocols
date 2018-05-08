@@ -1,6 +1,8 @@
 # How to grow an MD RAID on Linux
-Author: Zachary Pincus  
-Date: 2017-11-18  
+Author: Zachary Pincus
+
+Date: 2017-11-18
+
 http://zplab.wustl.edu
 
 1. identify drives in the RAID and their serial numbers
