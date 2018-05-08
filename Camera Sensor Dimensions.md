@@ -32,7 +32,7 @@ Where X is the effective magnification (objective ⋅ optocoupler magnification)
 ## Maximum image field sizes
 With the 1× optocoupler and the Zyla 5.5, a circle of diameter ~1860 pixels can be viewed without vignetting. With the 0.7× optocoupler, a circle ~1760 pixels in diameter is the maximum that will fit.
 
-The unobstructed diameter, and hence largest possible worm food pad  for a given magnification can be calculated as follows. For the 5× objective and 1× optocoupler:
+The unobstructed diameter, and hence largest possible worm food pad  for a given magnification can be calculated easily. For example, given a 5× objective and the 1× optocoupler with its 1860 pixel field of view:
 ```
 1860 pixels ⋅ (0.0065 sensor mm / pixel) ⋅ (1 sample mm / 5 sensor mm) ≈ 2.42 sample mm
 ```
