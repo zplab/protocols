@@ -1,8 +1,6 @@
 # Pixel and Frame Size of Andor Zyla 5.5
-Author: Zachary Pincus
-
-Date: 2018-05-07
-
+Author: Zachary Pincus  
+Date: 2018-05-07  
 http://zplab.wustl.edu
 
 ## Pixel size in image and sample planes

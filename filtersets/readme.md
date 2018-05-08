@@ -1,8 +1,6 @@
 # Filtersets for zplab microscopes
-Author: Zachary Pincus
-
-Date: 2018-05-04
-
+Author: Zachary Pincus  
+Date: 2018-05-04  
 http://zplab.wustl.edu
 
 ## DM6000 (zpl-scope)
