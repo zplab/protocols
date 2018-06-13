@@ -180,7 +180,7 @@
         sudo visudo
     and add `/usr/local/miniconda3/bin` to `Defaults secure_path` line.
     Copy over `scope_env.yml` file and run:
-    
+        sudo apt install automake autotools
         sudo pip install --upgrade pip
         sudo conda update conda
         sudo conda env update -n root -f scope_env.yml
