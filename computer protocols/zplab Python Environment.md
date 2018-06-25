@@ -131,7 +131,7 @@ dependencies:
         - matplotlib
         - scikit-image
         - qtconsole
-        - celiagg --install-option=--no-text-rendering
+        - celiagg --build-option=--no-text-rendering
         - git+https://github.com/zplab/freeimage-py
         - git+https://github.com/zplab/zplib
         - git+https://github.com/zplab/RisWidget

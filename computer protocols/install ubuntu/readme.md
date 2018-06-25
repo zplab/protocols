@@ -204,7 +204,7 @@
         sudo chown zplab:zplab /usr/local/scope
         job_runner_check --install
     Copy `fftw_wisdom` over to `/usr/local/scope` if it was previously calculated **on this machine**. Then run `scope_server`, stop it, and edit
-    the newly-created-over `/usr/local/scope/scope_config.py` file as appropriate.
+    the newly-created `/usr/local/scope/configuration.py` file as appropriate.
 
 17. Install dropbox (from https://www.burgundywall.com/post/autostart-dropbox-on-fedora):
 
