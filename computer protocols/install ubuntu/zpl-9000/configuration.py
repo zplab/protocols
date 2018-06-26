@@ -7,17 +7,19 @@ scope_configuration = dict(
         ('nosepiece', 'leica.nosepiece.ManualNosepiece'), # dm6
         #('il', 'leica.illumination_axes.IL'), # dmi8
         ('il', 'leica.illumination_axes.FieldWheel_IL'), # dm6000 dm6
-        ('tl', 'leica.illumination_axes.TL'),
+        ('tl', 'leica.illumination_axes.TL'), # dm6000 dm6
         ('_shutter_watcher', 'leica.illumination_axes.ShutterWatcher'), # dm6000 dm6
         ('iotool', 'iotool.IOTool'),
-        ('il.spectra', 'spectra.Spectra'),
+        ('il.spectra', 'spectra.Spectra'), # dm6
+        #('il.spectra', 'spectra.SpectraX'), # dm6000 dmi8
         ('tl.lamp', 'tl_lamp.SutterLED_Lamp'),
         ('camera', 'andor.Camera'),
         ('camera.acquisition_sequencer', 'acquisition_sequencer.AcquisitionSequencer'),
         ('camera.autofocus', 'autofocus.Autofocus'),
-        #('temperature_controller', 'temp_control.Peltier') # dm6000
+        #('temperature_controller', 'temp_control.Peltier'), # dm6000
         ('temperature_controller', 'temp_control.Circulator'), # dm6
-	('humidity_controller', 'humidity_control.HumidityController') # dm6, dm6000
+        ('humidity_controller', 'humidity_control.HumidityController'), # dm6, dm6000
+        ('job_runner', 'runner_device.JobRunner')
     ),
 
     server = dict(
@@ -41,9 +43,9 @@ scope_configuration = dict(
     camera = dict(
         MODEL = 'ZYLA-5.5-USB3',
         IOTOOL_PINS = dict(
-            trigger = 'B0',
-            arm = 'B1',
-            aux_out1 = 'B2'
+            trigger = 'B1',
+            arm = 'B2',
+            aux_out1 = 'B3'
         ),
     ),
 
@@ -85,15 +87,15 @@ scope_configuration = dict(
         TIMING = dict(
             on_latency_ms = 0.120, # Time from trigger signal to start of rise
             rise_ms = 0.015, # Time from start of rise to end of rise
-            off_latency_ms = 0.08, # Time from end of trigger to start of fall
-            fall_ms = 0.010 # Time from start of fall to end of fall
+            off_latency_ms = 0.01, # Time from end of trigger to start of fall
+            fall_ms = 0.015 # Time from start of fall to end of fall
         ),
         FILTER_SWITCH_DELAY = 0.15 # dm6
     ),
 
     sutter_led = dict(
-        IOTOOL_ENABLE_PIN = 'E6',
-        IOTOOL_PWM_PIN = 'D0',
+        IOTOOL_ENABLE_PIN = 'B0',
+        IOTOOL_PWM_PIN = 'B7',
         IOTOOL_PWM_MAX = 255,
         INITIAL_INTENSITY = 86,
         TIMING = dict(
@@ -104,6 +106,13 @@ scope_configuration = dict(
         ),
     ),
 
+    # peltier = dict(
+    #     SERIAL_PORT = '/dev/ttyPeltier',
+    #     SERIAL_ARGS = dict(
+    #         baudrate = 2400
+    #     )
+    # ),
+    #
     circulator = dict(
         SERIAL_PORT = '/dev/ttyCirculator',
         SERIAL_ARGS = dict(
@@ -116,6 +125,7 @@ scope_configuration = dict(
         SERIAL_ARGS = dict(
             baudrate=19200
         )
-    )
+    ),
 
+    mail_relay = 'osmtp.wustl.edu'
 )

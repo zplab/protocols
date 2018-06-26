@@ -2,18 +2,14 @@ scope_configuration = dict(
     drivers = ( # order is important!
         ('stand', 'leica.stand.Stand'),
         ('stage', 'leica.stage.Stage'),
-        ('nosepiece', 'leica.nosepiece.MotorizedNosepieceWithSafeMode'), # dm6000
-        ('il', 'leica.illumination_axes.FieldWheel_IL'), # dm6000 dm6
-        ('tl', 'leica.illumination_axes.TL'),
-        ('_shutter_watcher', 'leica.illumination_axes.ShutterWatcher'), # dm6000 dm6
+        ('nosepiece', 'leica.nosepiece.MotorizedNosepiece'), # dmi8
+        ('il', 'leica.illumination_axes.IL'), # dmi8
         ('iotool', 'iotool.IOTool'),
         ('il.spectra', 'spectra.SpectraX'), # dm6000 dmi8
         ('tl.lamp', 'tl_lamp.SutterLED_Lamp'),
         ('camera', 'andor.Camera'),
         ('camera.acquisition_sequencer', 'acquisition_sequencer.AcquisitionSequencer'),
         ('camera.autofocus', 'autofocus.Autofocus'),
-        ('temperature_controller', 'temp_control.Peltier'), # dm6000
-        ('humidity_controller', 'humidity_control.HumidityController') # dm6, dm6000
     ),
 
     server = dict(
@@ -86,7 +82,7 @@ scope_configuration = dict(
     ),
 
     sutter_led = dict(
-        IOTOOL_ENABLE_PIN = 'E6',
+        IOTOOL_ENABLE_PIN = 'B3',
         IOTOOL_PWM_PIN = 'D0',
         IOTOOL_PWM_MAX = 255,
         INITIAL_INTENSITY = 86,
@@ -98,17 +94,5 @@ scope_configuration = dict(
         ),
     ),
 
-    peltier = dict(
-        SERIAL_PORT = '/dev/ttyPeltier',
-        SERIAL_ARGS = dict(
-            baudrate = 2400
-        )
-    ),
-
-    humidifier = dict(
-        SERIAL_PORT = '/dev/ttyHumidifier',
-        SERIAL_ARGS = dict(
-            baudrate=19200
-        )
-    )
+    mail_relay = 'osmtp.wustl.edu'
 )

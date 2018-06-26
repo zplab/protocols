@@ -2,14 +2,23 @@ scope_configuration = dict(
     drivers = ( # order is important!
         ('stand', 'leica.stand.Stand'),
         ('stage', 'leica.stage.Stage'),
-        ('nosepiece', 'leica.nosepiece.MotorizedNosepiece'), # dmi8
-        ('il', 'leica.illumination_axes.IL'), # dmi8
+        #('nosepiece', 'leica.nosepiece.MotorizedNosepieceWithSafeMode'), # dm6000
+        #('nosepiece', 'leica.nosepiece.MotorizedNosepiece'), # dmi8
+        ('nosepiece', 'leica.nosepiece.ManualNosepiece'), # dm6
+        #('il', 'leica.illumination_axes.IL'), # dmi8
+        ('il', 'leica.illumination_axes.FieldWheel_IL'), # dm6000 dm6
+        ('tl', 'leica.illumination_axes.TL'),
+        ('_shutter_watcher', 'leica.illumination_axes.ShutterWatcher'), # dm6000 dm6
         ('iotool', 'iotool.IOTool'),
-        ('il.spectra', 'spectra.SpectraX'), # dm6000 dmi8
+        ('il.spectra', 'spectra.Spectra'),
         ('tl.lamp', 'tl_lamp.SutterLED_Lamp'),
         ('camera', 'andor.Camera'),
         ('camera.acquisition_sequencer', 'acquisition_sequencer.AcquisitionSequencer'),
         ('camera.autofocus', 'autofocus.Autofocus'),
+        #('temperature_controller', 'temp_control.Peltier') # dm6000
+        ('temperature_controller', 'temp_control.Circulator'), # dm6
+	('humidity_controller', 'humidity_control.HumidityController'), # dm6, dm6000
+        ('job_runner', 'runner_device.JobRunner')
     ),
 
     server = dict(
@@ -55,8 +64,9 @@ scope_configuration = dict(
             cyan = 'D3',
             teal = 'D4',
             green_yellow = 'D2',
-            red = 'D1' # dm6000 dmi8
+            #red = 'D1' # dm6000 dmi8
         ),
+        IOTOOL_GREEN_YELLOW_SWITCH_PIN = 'D1', # dm6
 
         # TIMING: depends *strongly* on how recently the last time the
         # lamp was turned on was. 100 ms ago vs. 10 sec ago changes the on-latency
@@ -76,13 +86,14 @@ scope_configuration = dict(
         TIMING = dict(
             on_latency_ms = 0.120, # Time from trigger signal to start of rise
             rise_ms = 0.015, # Time from start of rise to end of rise
-            off_latency_ms = 0.08, # Time from end of trigger to start of fall
-            fall_ms = 0.010 # Time from start of fall to end of fall
+            off_latency_ms = 0.01, # Time from end of trigger to start of fall
+            fall_ms = 0.015 # Time from start of fall to end of fall
         ),
+        FILTER_SWITCH_DELAY = 0.15 # dm6
     ),
 
     sutter_led = dict(
-        IOTOOL_ENABLE_PIN = 'E6',
+        IOTOOL_ENABLE_PIN = 'B3',
         IOTOOL_PWM_PIN = 'D0',
         IOTOOL_PWM_MAX = 255,
         INITIAL_INTENSITY = 86,
@@ -93,4 +104,20 @@ scope_configuration = dict(
             fall_ms = 0.013 # Time from start of fall to end of fall
         ),
     ),
+
+    circulator = dict(
+        SERIAL_PORT = '/dev/ttyCirculator',
+        SERIAL_ARGS = dict(
+            baudrate=9600
+        )
+    ),
+
+    humidifier = dict(
+        SERIAL_PORT = '/dev/ttyHumidifier',
+        SERIAL_ARGS = dict(
+            baudrate=19200
+        )
+    ),
+
+    mail_relay = 'osmtp.wustl.edu'
 )

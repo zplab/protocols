@@ -4,13 +4,13 @@
 SUBSYSTEMS=="usb", ATTRS{product}=="USB <-> Serial", ATTRS{manufacturer}=="FTDI", SYMLINK+="ttyScope"
 
 # Lumencor Spectra lamp
-SUBSYSTEMS=="usb", ATTRS{product}=="UT232R", ATTRS{manufacturer}=="FTDI", ATTRS{serial}=="FTVI2WYU", SYMLINK+="ttySpectra"
+SUBSYSTEMS=="usb", ATTRS{product}=="FT232R USB UART", ATTRS{manufacturer}=="FTDI", ATTRS{serial}=="A904PUK9", SYMLINK+="ttySpectra"
 
 # IOTool interface box
 SUBSYSTEMS=="usb", ATTRS{product}=="IOTool", ATTRS{manufacturer}=="zplab.wustl.edu", ATTRS{serial}=="0xFFFF", SYMLINK+="ttyIOTool"
 
 # Torrey Pines Scientific peltier controller
-SUBSYSTEMS=="usb", ATTRS{product}=="US232R", ATTRS{manufacturer}=="FTDI", ATTRS{serial}=="FTH1RQ7D", SYMLINK+="ttyPeltier"
+SUBSYSTEMS=="usb", ATTRS{product}=="FT232R USB UART", ATTRS{manufacturer}=="FTDI", ATTRS{serial}=="A906BJED", SYMLINK+="ttyPeltier"
 
 # Humidity controller
 SUBSYSTEMS=="usb", ATTRS{product}=="USB-RS232 Cable", ATTRS{manufacturer}=="FTDI", ATTRS{serial}=="FT03DVUE", SYMLINK+="ttyHumidifier"

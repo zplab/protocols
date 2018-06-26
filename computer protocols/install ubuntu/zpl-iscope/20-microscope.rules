@@ -8,3 +8,6 @@ SUBSYSTEMS=="usb", ATTRS{product}=="UT232R", ATTRS{manufacturer}=="FTDI", ATTRS{
 
 # IOTool interface box
 SUBSYSTEMS=="usb", ATTRS{product}=="IOTool", ATTRS{manufacturer}=="zplab.wustl.edu", ATTRS{serial}=="0xFFFF", SYMLINK+="ttyIOTool"
+
+# IOTool interface box
+SUBSYSTEMS=="usb", ATTRS{product}=="IOTool", ATTRS{manufacturer}=="zplab.wustl.edu", ATTRS{serial}=="0xFFFA", SYMLINK+="ttyMicrofluidics"

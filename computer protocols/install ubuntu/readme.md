@@ -189,11 +189,13 @@
     
     Until zeromq 4.2.6 is released and available in conda, we need to custom build libzmq from github, to pick up some bugfixes:
     
+        sudo apt install libtool autoconf automake
         commit=889ac2eb3dcf29be1b7bdae93f216d30fd2b9dfb
         curl -o libzmq.zip https://codeload.github.com/zeromq/libzmq/zip/$commit
         unzip libzmq.zip && rm libzmq.zip
         cd libzmq-$commit
-        ./autogen.sh && ./configure && make && make install
+        ./autogen.sh && ./configure && make 
+        sudo make install
         cd ..
         rm -rf libzmq-$commit
         pip install pyzmq --no-binary pyzmq
@@ -203,6 +205,7 @@
         sudo mkdir /usr/local/scope
         sudo chown zplab:zplab /usr/local/scope
         job_runner_check --install
+        scope_job_runner add `which incubator_check`
     Copy `fftw_wisdom` over to `/usr/local/scope` if it was previously calculated **on this machine**. Then run `scope_server`, stop it, and edit
     the newly-created `/usr/local/scope/configuration.py` file as appropriate.
 
