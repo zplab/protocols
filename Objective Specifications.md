@@ -1,4 +1,4 @@
-# Key Objectives used on ZP Lab scopes
+# Objectives on zplab scopes
 Author: Zachary Pincus  
 Date: 2018-07-12
 http://zplab.wustl.edu
