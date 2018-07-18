@@ -30,24 +30,25 @@ Where X is the effective magnification (objective ⋅ optocoupler magnification)
 **Note: these figures are theoretical, assuming perfect optics and exactly 6.5 µm pixels. Pixel sizes should be verified with the lab's micrometer slide before sensitive calculations are made.**
 
 ## Maximum image field sizes
-Using the 1× optocoupler with the Zyla 5.5, a circle of diameter ~1860 pixels can be viewed without vignetting. With the 0.7× optocoupler, a circle ~1760 pixels in diameter is the maximum that will fit.
+Roughly, the un-vignetted region for the 0.7× optocoupler is a circle, centered in the middle of the field of view, with a radius of ~0.38× the width of the field. For the 1× optocoupler, the radius is ~1.1x the width of the field (i.e. only the corners are vignetted).
 
-The unobstructed diameter for a given magnification can be calculated easily. For example, given a 5× objective and the 1× optocoupler with its 1860 pixel field of view:
+For the Zyla 5.5, this means that the 1x optocoupler permits complete viewing of a circle with a diameter equal to the full height of the 2160 pixel sensor. With the 0.7x optocoupler, a circle with a diameter of ~1945 pixels can be completely viewed.
+
+The maximum unobstructed diameter in millimeters, for any given magnification and optocoupler, can be calculated easily. For example, given a 5× objective and the 1× optocoupler with its 2160 pixel field of view:
 ```
-1860 pixels ⋅ (0.0065 sensor mm / pixel) ⋅ (1 sample mm / 5 sensor mm) ≈ 2.42 sample mm
+2160 pixels ⋅ (0.0065 sensor mm / pixel) ⋅ (1 sample mm / 5 sensor mm) ≈ 2.81 sample mm
 ```
 
 |Objective|Optocoupler|Max Diameter|
 |---------|-----------|------------|
-| 5×      | 0.7×      | 3.27 mm    |
-| 5×      | 1×        | 2.42 mm    |
-| 10×     | 0.7×      | 1.63 mm    |
-| 10×     | 1×        | 1.21 mm    |
-| 20×     | 0.7×      | 0.817 mm   |
-| 20×     | 1×        | 0.605 mm   |
-| 40×     | 0.7×      | 0.401 mm   |
-| 40×     | 1×        | 0.302 mm   |
-| 63×     | 0.7×      | 0.259 mm   |
-| 63×     | 1×        | 0.192 mm   |
-
+| 5×      | 0.7×      | 3.61 mm    |
+| 5×      | 1×        | 2.81 mm    |
+| 10×     | 0.7×      | 1.81 mm    |
+| 10×     | 1×        | 1.40 mm    |
+| 20×     | 0.7×      | 0.903 mm   |
+| 20×     | 1×        | 0.702 mm   |
+| 40×     | 0.7×      | 0.452 mm   |
+| 40×     | 1×        | 0.351 mm   |
+| 63×     | 0.7×      | 0.287 mm   |
+| 63×     | 1×        | 0.223 mm   |
 
