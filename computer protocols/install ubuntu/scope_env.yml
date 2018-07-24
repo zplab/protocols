@@ -16,11 +16,10 @@ dependencies:
     - pyserial
     - python-blosc
     - pip:
-        - pyqt5
+        - PyQt5
         - matplotlib
         - scikit-image
         - qtconsole
-        - celiagg --build-option=--no-text-rendering
         - PySDL2
         - git+https://github.com/zplab/freeimage-py
         - git+https://github.com/zplab/zplib

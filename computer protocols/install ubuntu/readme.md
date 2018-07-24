@@ -146,7 +146,7 @@
 
 12. Install various useful tools and do some cleanup:
 
-        sudo apt install libfftw3-dev libsdl2-2.0 screen minicom iftop nvidia-cuda-toolkit curl qpdfview git virtualbox
+        sudo apt install libfftw3-dev libsdl2-2.0 screen minicom iftop nvidia-cuda-toolkit curl qpdfview git virtualbox automake
         cd ~
         rmdir Downloads Music Pictures Templates Videos Public
 
@@ -180,31 +180,33 @@
         sudo visudo
     and add `/usr/local/miniconda3/bin` to `Defaults secure_path` line.
     Copy over `scope_env.yml` file and run:
-        sudo apt install automake autotools
+    
         sudo pip install --upgrade pip
         sudo conda update conda
         sudo conda env update -n root -f scope_env.yml
+        sudo pip install celiagg --global-option=--no-text-rendering
         ipython profile create
     Copy over `ipython_config.py` file to `~/.ipython/profile_default/ipython_config.py`
     
     Until zeromq 4.2.6 is released and available in conda, we need to custom build libzmq from github, to pick up some bugfixes:
     
-        sudo apt install libtool autoconf automake
+        sudo apt install libtool
         commit=889ac2eb3dcf29be1b7bdae93f216d30fd2b9dfb
         curl -o libzmq.zip https://codeload.github.com/zeromq/libzmq/zip/$commit
         unzip libzmq.zip && rm libzmq.zip
         cd libzmq-$commit
-        ./autogen.sh && ./configure && make 
+        ./autogen.sh && ./configure && make -j8
         sudo make install
         cd ..
         rm -rf libzmq-$commit
-        pip install pyzmq --no-binary pyzmq
+        sudo pip uninstall pyzmq
+        sudo pip install pyzmq --no-binary pyzmq
 
 16. Install scope-server tools:
 
         sudo mkdir /usr/local/scope
         sudo chown zplab:zplab /usr/local/scope
-        job_runner_check --install
+        sudo job_runner_check --install
         scope_job_runner add `which incubator_check`
     Copy `fftw_wisdom` over to `/usr/local/scope` if it was previously calculated **on this machine**. Then run `scope_server`, stop it, and edit
     the newly-created `/usr/local/scope/configuration.py` file as appropriate.
@@ -250,7 +252,7 @@
 
 19. Install latest andor drivers, but not bitflow (not needed for USB cameras):
 
-        cd "Dropbox/pincuslab-common/Hardware Manuals/Andor Zyla/andor-sdk3-3.12.30012.0"
+        cd "Dropbox/pincuslab-common/Hardware Manuals/Andor Zyla/andor-sdk3-3.13.30034.0"
         sudo ./install_andor
         sudo udevadm trigger
 
