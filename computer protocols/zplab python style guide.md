@@ -3,6 +3,9 @@ Author: Zachary Pincus
 Date: 2018-07-29  
 http://zplab.wustl.edu
 
+0. The **most important** principle of style is simplicity. (This applies to both code and prose!) If there are several ways to do something, prefer the simpler way even if it seems less "flexible". (And if there seems to be a trade-off between the two, often a moment's thought will reveal a third option that does both.) In particular, **never** add features that you do not need _right now_ but that "might be useful in the future". Don't waste time and add complexity to your code to have it do something you don't need today. If you need it in the future, you can add it then! And if you turn out not to need it ever (which is often!) then you've saved a lot of effort.
+
+    To review: **simple for today's needs** is better than **flexible/extensible for tomorrow's needs**. (This is also known as [YAGNI](https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it).)
 
 1. In general follow [PEP 8](https://www.python.org/dev/peps/pep-0008/), though *never* to the detriment of readability. In particular, the one main exception to PEP 8 in the lab is that lines longer than 79 characters are permitted. Awkward breaks are worse than the occasional 100-character line. (Everyone should watch Raymond Hettinger's [PyCon talk](https://www.youtube.com/watch?v=wf-BqAjZb8M), for how to write beautiful, pythonic code. Hint: severe adherence to PEP 8, and in particular line length limits, is silly.)
 
