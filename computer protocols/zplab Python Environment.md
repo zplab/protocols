@@ -131,13 +131,15 @@ dependencies:
         - matplotlib
         - scikit-image
         - qtconsole
-        - celiagg --build-option=--no-text-rendering
         - git+https://github.com/zplab/freeimage-py
         - git+https://github.com/zplab/zplib
         - git+https://github.com/zplab/RisWidget
         - git+https://github.com/zplab/elegant
 EOF
+pip install --upgrade pip
+conda update conda
 conda env update -n root -f user_env.yml
+pip install celiagg --global-option=--no-text-rendering
 rm user_env.yml
 ```
 
