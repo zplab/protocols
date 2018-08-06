@@ -29,8 +29,16 @@ Where X is the effective magnification (objective ⋅ optocoupler magnification)
 
 **Note: these figures are theoretical, assuming perfect optics and exactly 6.5 µm pixels. Pixel sizes should be verified with the lab's micrometer slide before sensitive calculations are made.**
 
+Calibrations:
+
+|   Date   |  Scope  |Objective|Optocoupler|1 pixel = (x)|1 pixel = (y)|
+|----------|---------|---------|-----------|-------------|-------------|
+|2018-08-03|zpl-9000 | 10×     | 1×        |  0.6431 µm  |  0.6445 µm  |
+|2018-08-03|zpl-scope| 10×     | 1×        |  0.6434 µm  |  0.6458 µm  |
+
+
 ## Maximum image field sizes
-Roughly, the un-vignetted region for the 0.7× optocoupler is a circle, centered in the middle of the field of view, with a radius of ~0.38× the width of the field. For the 1× optocoupler, the radius is ~1.1x the width of the field (i.e. only the corners are vignetted).
+Roughly, the un-vignetted region for the 0.7× optocoupler is a circle, centered in the middle of the field of view, with a radius of ~0.38× the width of the field. For the 1× optocoupler, the radius is ~0.55x the width of the field (i.e. only the corners are vignetted).
 
 For the Zyla 5.5, this means that the 1x optocoupler permits complete viewing of a circle with a diameter equal to the full height of the 2160 pixel sensor. With the 0.7x optocoupler, a circle with a diameter of ~1945 pixels can be completely viewed.
 
