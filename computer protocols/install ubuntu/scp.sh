@@ -11,4 +11,5 @@ do
     scp zplab@$HOST:/etc/samba/smb.conf $HOST
     scp zplab@$HOST:/usr/local/scope/configuration.py $HOST
     scp zplab@$HOST:/usr/local/scope/fftw_wisdom $HOST
+    scp zplab@$HOST:/etc/netplan/99-jumbo-frames.yaml $HOST
 done

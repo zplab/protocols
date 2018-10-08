@@ -256,9 +256,31 @@
         sudo ./install_andor
         sudo udevadm trigger
 
-20. Install system tracking utilities and make a BTRFS snapshot:
+20. Configure persistent jumbo frames if using fiber-optic networking:
+    Find out the interface name of the fiber optic card by using `ip link` (it should be the one with `state UP` in its line, with name like `enp101s0`).
+    You could also figure it out by finding out the network interface(s) with the `ixgbe` driver:
+    
+        ls -l /sys/class/net/*/device/driver | grep ixgbe | cut -d"/" -f5
+    
+    Then run the below, setting the IFNAME variable correctly.
+    
+        sudo -s
+        IFNAME=enp101s0 
+        # or: IFNAME=$(ls -l /sys/class/net/*/device/driver | grep ixgbe | cut -d"/" -f5)
+        cat > /etc/netplan/99-jumbo-frames.yaml  << EOF
+        network:
+          version: 2
+          ethernets:
+            $IFNAME:
+              dhcp4: true
+              mtu: 9000
+        EOF
+        netplan generate
+        netplan apply
+ 
+21. Install system tracking utilities and make a BTRFS snapshot:
 
         sudo apt-get install etckeeper
         sudo snapshot create base-system
 
-21. From another computer, run `scp.sh` (after setting the `HOST` variable) to make a backup copy of all relevant config files for that microscope.
+22. From another computer, run `scp.sh` (after setting the `HOST` variable) to make a backup copy of all relevant config files for that microscope.
