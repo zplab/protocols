@@ -183,6 +183,7 @@
     
         sudo pip install --upgrade pip
         sudo conda update conda
+        export PIP_SRC="/usr/local/scope/py_src"
         sudo conda env update -n root -f scope_env.yml
         sudo pip install celiagg --global-option=--no-text-rendering
         ipython profile create
