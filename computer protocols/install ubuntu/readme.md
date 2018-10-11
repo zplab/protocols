@@ -184,16 +184,26 @@
         sudo pip install --upgrade pip
         sudo conda update conda
         export PIP_SRC="/usr/local/scope/py_src"
-        sudo conda env update -n root -f scope_env.yml
+        sudo mkdir /usr/local/scope
+        sudo -E conda env update -n root -f scope_env.yml
+        sudo chown -R zplab:zplab /usr/local/scope
+        rm $PIP_SRC/pip-delete-this-directory.txt
         for src_dir in $PIP_SRC/*/; do
-            cd src_dir
+            cd $src_dir
             git config user.name "Zachary Pincus"
             git config user.email "zpincus@gmail.com"
             cd ..
-        rm $PIP_SRC/pip-delete-this-directory.txt
+        done
         sudo pip install celiagg --global-option=--no-text-rendering
+        ris_widget --install-desktop-file
         ipython profile create
     Copy over `ipython_config.py` file to `~/.ipython/profile_default/ipython_config.py`
+    
+    Also install the worm segmentation tools. Copy over the latest release distribution (e.g. `worm_segmenter-1.zip`) and then run:
+    
+        unzip worm_segmenter-1.zip
+        rm worm_segmenter-1.zip
+        sudo pip install ./worm_segmenter-1
     
     Until zeromq 4.2.6 is released and available in conda, we need to custom build libzmq from github, to pick up some bugfixes:
     
@@ -211,8 +221,6 @@
 
 16. Install scope-server tools:
 
-        sudo mkdir /usr/local/scope
-        sudo chown zplab:zplab /usr/local/scope
         sudo job_runner_check --install
         scope_job_runner add `which incubator_check`
     Copy `fftw_wisdom` over to `/usr/local/scope` if it was previously calculated **on this machine**. Then run `scope_server`, stop it, and edit
