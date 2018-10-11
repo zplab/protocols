@@ -185,6 +185,12 @@
         sudo conda update conda
         export PIP_SRC="/usr/local/scope/py_src"
         sudo conda env update -n root -f scope_env.yml
+        for src_dir in $PIP_SRC/*/; do
+            cd src_dir
+            git config user.name "Zachary Pincus"
+            git config user.email "zpincus@gmail.com"
+            cd ..
+        rm $PIP_SRC/pip-delete-this-directory.txt
         sudo pip install celiagg --global-option=--no-text-rendering
         ipython profile create
     Copy over `ipython_config.py` file to `~/.ipython/profile_default/ipython_config.py`
