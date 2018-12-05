@@ -108,7 +108,7 @@ EOF
 
     Here’s a [quick guide](http://conda.pydata.org/docs/test-drive.html) to Anaconda, though note that for basic use you don’t need to know any of this.
 
-- Install the basic suite of zplab tools into the root miniconda environment. Ignore any message about needing to activate the `root` environment: the root (aka `base`) environment is active by default.
+- Install the basic suite of zplab tools into the root miniconda environment. Ignore any message about needing to activate the `root` environment: the root (aka `base`) environment is active by default. (On macs, you may need to first do `export MACOSX_DEPLOYMENT_TARGET=10.9` for freeimage to compile correctly.)
 
 ```
 cat > user_env.yml << EOF
