@@ -1,4 +1,4 @@
-# How to Back Data Up to a Tape
+# Tape Backup Protocol
 Author: Zachary Pincus  
 Date: 2018-12-18
 http://zplab.wustl.edu
