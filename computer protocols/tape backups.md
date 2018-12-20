@@ -4,23 +4,24 @@ Date: 2018-12-18
 http://zplab.wustl.edu
 
 
-`zpl-purple` has an [LTO Ultrium 6 tape drive](https://en.wikipedia.org/wiki/Linear_Tape-Open) installed. The uncompressed  capacity of these tapes is 2.5 TB. (NB: compression won't get us anything for  already-compressed image files.) 
+`zpl-purple` has an [LTO Ultrium 6 tape drive](https://en.wikipedia.org/wiki/Linear_Tape-Open) installed. For planning how much to put on any one tape, the uncompressed capacity of LTO-6 tapes is 2.5 TB. (Higher "compressed capacities" are advertised, but compression won't actually get us anything for PNG images which are already compressed.) 
 
-**Note:** Tapes are strictly for offline data storage; they are not random-access. Thus the procedure is to dump a set of files to a tape using the `tar` utility and store the tape until the files are needed again. At that point, you need to restore either all or a subset of those files to a hard drive to make use of them. 
+Note that tapes are strictly for offline data storage; they are not random-access storate. Thus the procedure is to dump a set of files to a tape using the `tar` utility and store the tape until the files are needed again. At that point, you need to restore either all or a subset of those files to a hard drive to make use of them. 
 
 Also, while only `zpl-purple` has the tape drive, you can use it to back up or restore files from other computers on the network. Just use `smb` to mount the shared directory on `zpl-purple` and follow the instructions below.
 
-#### Tape labeling
-Tapes should be labeled with:
+### Tape labeling
+
+Tapes should be labeled as follows (using 5/8×3" Avery durable labels -- **not lab tape!** -- and permanent marker):
 1) Your name.
 2) Name(s) of directory/directories backed up.
 3)  `YYYY-MM-DD` [ISO 8601 date](https://en.wikipedia.org/wiki/ISO_8601) if not part of directory name.
 4) Brief description of data.
 5) Tape number (`x of y`) in the case that multiple tapes are used for a given `tar` archive (see below).
 
-#### How to create a backup using `tar`
+### How to create and restore files with `tar`
 
-**Important:** Don't try to back up multiple `tar` archives on a single tape. It's possible, but not worth the pain. You can put multiple experiment directories in a single archive, and do strive to mostly fill up tapes (i.e. don't back up only 100 GB of files onto a 2.5 TB tape), but don't go to extremes. Tapes are relatively cheap, so choose a backup strategy that makes sense.
+**Important:** Don't try to back up multiple `tar` archives on a single tape. It's possible, but not worth the trouble. You can put multiple experiment directories in a single archive, though. Do strive to mostly fill up tapes (i.e. don't back up only 100 GB of files onto a 2.5 TB tape), but no need to go to extremes. Tapes are relatively cheap, so choose a backup strategy that makes sense over one that fills all tapes to capacity.
 
 1) Insert a tape into the drive, and double-check that compression is disabled:
 
@@ -48,7 +49,7 @@ Tapes should be labeled with:
 
        sudo mt-st -f /dev/st0 offiline
 
-   **Make sure to label the tape immediately after ejecting it!** This is doubly important when a single archive is spread across multiple tapes: you really don't want get the tape numbers confused: to restore the data, you'll need to insert the tapes in the correct order.
+   **Make sure to label the tape *immediately* after ejecting it!** This is doubly important when a single archive is spread across multiple tapes: you really don't want get the tape numbers confused: to restore the data, you'll need to insert the tapes in the correct order.
 
 5) Make sure the archive still looks good. Re-insert the tape, then run:
 
@@ -74,5 +75,5 @@ Tapes should be labeled with:
     
     (This works with the `-C` option too.)
    
-Most of the above is standard `tar` usage, with the only wrinkle being the use of `/dev/st0` and the `-M` option. Consult the [`tar` man page](http://manpages.ubuntu.com/manpages/cosmic/man1/tar.1.html).
+Most of the above is standard `tar` usage, with the only wrinkle being the use of `/dev/st0` and the `-M` option. Consult the [`tar` man page](http://manpages.ubuntu.com/manpages/cosmic/man1/tar.1.html) for more details, or any number of online tutorials.
 
