@@ -2,10 +2,7 @@ scope_configuration = dict(
     drivers = ( # order is important!
         ('stand', 'leica.stand.Stand'),
         ('stage', 'leica.stage.Stage'),
-        #('nosepiece', 'leica.nosepiece.MotorizedNosepieceWithSafeMode'), # dm6000
-        #('nosepiece', 'leica.nosepiece.MotorizedNosepiece'), # dmi8
         ('nosepiece', 'leica.nosepiece.ManualNosepiece'), # dm6
-        #('il', 'leica.illumination_axes.IL'), # dmi8
         ('il', 'leica.illumination_axes.FieldWheel_IL'), # dm6000 dm6
         ('tl', 'leica.illumination_axes.TL'),
         ('_shutter_watcher', 'leica.illumination_axes.ShutterWatcher'), # dm6000 dm6
@@ -15,9 +12,8 @@ scope_configuration = dict(
         ('camera', 'andor.Camera'),
         ('camera.acquisition_sequencer', 'acquisition_sequencer.AcquisitionSequencer'),
         ('camera.autofocus', 'autofocus.Autofocus'),
-        #('temperature_controller', 'temp_control.Peltier') # dm6000
         ('temperature_controller', 'temp_control.Circulator'), # dm6
-	('humidity_controller', 'humidity_control.HumidityController'), # dm6, dm6000
+        ('humidity_controller', 'humidity_control.HumidityController'), # dm6, dm6000
         ('job_runner', 'runner_device.JobRunner')
     ),
 
@@ -36,7 +32,15 @@ scope_configuration = dict(
         SERIAL_PORT = '/dev/ttyScope',
         SERIAL_ARGS = dict(
             baudrate = 115200
-        )
+        ),
+        TL_FIELD_DEFAULTS = {
+            '5': 12, # dm6
+            '10': 16 # dm6
+        },
+        TL_APERTURE_DEFAULTS = {
+            '5': 28, # dm6, dm6000
+            '10': 26 # dm6
+        }
     ),
 
     camera = dict(
