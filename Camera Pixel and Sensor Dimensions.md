@@ -60,3 +60,22 @@ The maximum unobstructed diameter in millimeters, for any given magnification an
 | 63×     | 0.7×      | 0.287 mm   |
 | 63×     | 1×        | 0.223 mm   |
 
+## Camera sensor specifications
+All measures below are for 16-bit rolling-shutter slow readout mode. See linked sheets for further detail.
+
+#####[zpl-scope](cameras/VSC-02860)
+- gain: 0.52 e<sup>-</sup>/ADC count
+- median read noise: 1.16 e<sup>-</sup> 
+- dark current: 0.122 e<sup>-</sup>/pixel/sec
+
+#####[zpl-purple](cameras/VSC-04562)
+- gain: 0.49 e<sup>-</sup>/ADC count
+- median read noise: 1.17 e<sup>-</sup> 
+- dark current: 0.123 e<sup>-</sup>/pixel/sec
+
+#####[zpl-9000](cameras/VSC-07338)
+- gain: 0.47 e<sup>-</sup>/ADC count
+- median read noise: 1.18 e<sup>-</sup> 
+- dark current: 0.133 e<sup>-</sup>/pixel/sec
+
+ 

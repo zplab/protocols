@@ -195,7 +195,7 @@
             cd ..
         done
         sudo pip install celiagg --global-option=--no-text-rendering
-        ris_widget --install-desktop-file
+        sudo ris_widget --install-desktop-file
         ipython profile create
     Copy over `ipython_config.py` file to `~/.ipython/profile_default/ipython_config.py`
     
