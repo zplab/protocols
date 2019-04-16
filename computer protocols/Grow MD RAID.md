@@ -5,12 +5,29 @@ Date: 2017-11-18
 
 http://zplab.wustl.edu
 
-1. identify drives in the RAID and their serial numbers
+1. find the RAID array number (`/dev/mdXXX` for some value of `XXX`; probably `127`):
+
+       ls -l /dev/md
+
+2. check the health of the RAID:
+
+       cat /proc/mdstat
+       sudo mdadm --detail  /dev/mdXXX
+
+3. check the health of the filesystem:
+
+       umount /mnt/XXXarray
+       xfs_repair -n /dev/mdXXX
+       mount /mnt/XXXarray
+
+4. identify drives in the RAID and their serial numbers:
+
+       sudo mdadm --detail  /dev/mdXXX
        lsblk -s -o NAME,SIZE,SERIAL /dev/mdXXX
 
-2. open up computer and note position of drives with specified serial numbers
+5. open up computer and note position of drives with specified serial numbers
 
-3. for each drive in the RAID:
+6. for each drive in the RAID:
     - remove the drive from the RAID in software:
     
           mdadm --fail /dev/mdXXX /dev/sdX1
@@ -37,15 +54,15 @@ http://zplab.wustl.edu
     
           cat /proc/mdstat
 
-4. grow the array to use the new drives
+7. after all drives have been replaced, grow the array to use the new drives:
 
        mdadm --grow /dev/mdXXX --backup-file=~/grow_backup --size=max
 
-5. growing triggers a resync: wait until the resync has finished
+8. growing triggers a resync: wait until the resync has finished again
 
        cat /proc/mdstat
 
-6. check, resize, and re-check the filesystem:
+9. check, resize, and re-check the filesystem:
 
        umount /mnt/XXXarray
        xfs_repair -n /dev/mdXXX
