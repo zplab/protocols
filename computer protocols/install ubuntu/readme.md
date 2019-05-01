@@ -65,8 +65,13 @@
    edit `/etc/fstab` to add:
    
        UUID=uuid /mnt/ARRAYNAME xfs noatime,inode64 0 2
-   where `uuid` is replaced by the output of `lsblk` above
-
+   where `uuid` is replaced by the output of `lsblk` above. Now mount the
+   array and make it read/write by zplab:
+   
+       sudo mount /mnt/ARRAYNAME
+       sudo chown -R zplab:zplab /mnt/ARRAYNAME
+       sudo chmod -R 775 /mnt/ARRAYNAME
+   
 8. If NFS is desired (generally not):
 
        sudo apt-get install nfs-common
