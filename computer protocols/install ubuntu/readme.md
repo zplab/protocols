@@ -178,6 +178,7 @@
         mount /mnt/btrfs-root/
         chmod go-rwx /mnt/btrfs-root
     Copy `snapshot.py` to `/usr/local/bin/snapshot` and set the permissions:
+    
         curl -o /usr/local/bin/snapshot https://raw.githubusercontent.com/zplab/protocols/master/computer%20protocols/install%20ubuntu/snapshot.py
         chown root:root /usr/local/bin/snapshot
         chmod u+x /usr/local/bin/snapshot
