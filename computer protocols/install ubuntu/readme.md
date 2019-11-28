@@ -1,8 +1,7 @@
 # Kubuntu installation for zplab microscopes
 
 1. install Kubuntu with the following partition scheme on the system SSD:
-  - 96 GB / btrfs
-  - 34 GB swap
+  - 256 GB / btrfs
   - remaining /home ext4
 
 2. Install basic tools:
@@ -72,38 +71,50 @@
        sudo chown -R zplab:zplab /mnt/ARRAYNAME
        sudo chmod -R 775 /mnt/ARRAYNAME
    
-8. If NFS is desired (generally not):
+8. Add a swapfile (the default swapfile on the BTRFS root won't work, so we need to put it on the ext4 /home mount)
 
-       sudo apt-get install nfs-common
-   First, edit `/etc/fstab` to add nfs mounts as desired, then make mount points, e.g.:
-   
-       OTHER_SCOPE_NAME:/mnt/OTHERARRAY /mnt/OTHERARRAY nfs noatime,intr,x-systemd.automount 0 2
-   (TODO: is x-systemd.automount still necessary? As of 2016-11 it is required to allow nfs to mount on boot.)  
-   Then make the mount point: 
-      
-       sudo mkdir /mnt/scopearray
-   Next, enable the NFS server:
-   
-       sudo apt-get install nfs-kernel-server
-   Edit `/etc/exports` to add (e.g.):
-   
-       /mnt/ARRAYNAME zpl-iscope(rw) zpl-scope(rw)
-   And run:
-   
-       exportfs -a
-       sudo mkdir /etc/systemd/system/nfs-server.service.d/
-   Now copy `wait_for_dns.py` to `/etc/systemd/system/nfs-server.service.d/` and run:
-   
-       sudo systemctl edit --full nfs-server
-   Add the following before other ExecStartPre lines:
-   
-       ExecStartPre=/usr/bin/python3 /etc/systemd/system/nfs-server.service.d/wait_for_dns.py
+       sudo -s
+       swapon --show # should show no swap in use
+       fallocate -l 6G /home/swapfile
+       chmod 600 /home/swapfile
+       mkswap /home/swapfile
+       swapon /home/swapfile
+       pico /etc/fstab # edit /swapfile to /home/swapfile
+       rm /swapfile
+       swapon --show
 
 9. Install `zsh`:
 
        sudo apt-get install zsh
        chsh --shell `which zsh` zplab
-   Copy `zshrc` file to `~/.zshrc`
+       cat > ~/.zshrc << EOF
+       setopt hist_ignore_dups
+       setopt append_history
+       HISTSIZE=100000
+       SAVEHIST=100000
+       HISTFILE=~/.zsh_history
+
+       autoload -U history-search-end
+       zle -N history-beginning-search-backward-end history-search-end
+       zle -N history-beginning-search-forward-end history-search-end
+
+       bindkey -e
+       bindkey "${key[Up]}" history-beginning-search-backward-end
+       bindkey "${key[Down]}" history-beginning-search-forward-end
+
+       autoload -U colors && colors
+       prompt="%{$bold_color$fg[red]%}[%{$fg[blue]%}%n@%m:%{$fg[green]%}%25<..<%~%<<%{$fg[red]%}]%{$fg[green]%}%(!.#.>)%{$reset_color%} "
+
+       setopt correct
+       export SPROMPT="Correct %{$fg_bold[red]%}%R%{$reset_color%} to %{$fg_bold[green]%}%r%{$reset_color%}? ([No], Yes, Abort, Edit) "
+
+       autoload -Uz compinit && compinit
+
+       alias ls='ls --color=auto'
+       alias grep='grep --color=auto'
+       alias fgrep='fgrep --color=auto'
+       alias egrep='egrep --color=auto'
+       EOF
 
 10. Install SMB
 
@@ -119,7 +130,7 @@
            veto files = /._*/.DS_Store/
            delete veto files = yes
         
-        [purplearray]
+        [ARRAYNAME]
            path = /mnt/ARRAYNAME
            browseable = yes
            writeable = yes
@@ -162,14 +173,14 @@
     Note: UUID should is the same as the other btrfs UUID for the @ subvol in fstab  
     Run:
     
-        sudo mkdir /mnt/btrfs-root/
-        sudo mount /mnt/btrfs-root/
-        sudo chmod go-rwx /mnt/btrfs-root
-    Copy `snapshot.py` to `/usr/local/bin/snapshot` and run:
-    
-        sudo chown root:root /usr/local/bin/snapshot
-        sudo chmod u+x /usr/local/bin/snapshot
-
+        sudo -s
+        mkdir /mnt/btrfs-root/
+        mount /mnt/btrfs-root/
+        chmod go-rwx /mnt/btrfs-root
+    Copy `snapshot.py` to `/usr/local/bin/snapshot` and set the permissions:
+        curl -o /usr/local/bin/snapshot https://raw.githubusercontent.com/zplab/protocols/master/computer%20protocols/install%20ubuntu/snapshot.py
+        chown root:root /usr/local/bin/snapshot
+        chmod u+x /usr/local/bin/snapshot
 
 14. Add zplab to dialout group (who can open ttys):
 
@@ -180,17 +191,64 @@
         wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
         sudo bash Miniconda3-latest-Linux-x86_64.sh -p /usr/local/miniconda3 -b
         rm Miniconda3-latest-Linux-x86_64.sh
+        source /usr/local/miniconda3/bin/activate
+        conda init zsh
     Now allow running miniconda programs with sudo (like pip):
     
         sudo visudo
     and add `/usr/local/miniconda3/bin` to `Defaults secure_path` line.
-    Copy over `scope_env.yml` file and run:
+        
+    Next, keep miniconda from always showing that we're using the `base` environment:
     
+        sudo -s
+        mkdir -p /usr/local/miniconda3/etc/conda/activate.d
+        cat > /usr/local/miniconda3/etc/conda/activate.d/remove_base_ps1.sh << EOF
+        PS1="$(echo $PS1 | sed 's/(base) //')"
+        EOF
+    
+    Create our default conda environment:
+            
         sudo pip install --upgrade pip
         sudo conda update conda
         export PIP_SRC="/usr/local/scope/py_src"
         sudo mkdir /usr/local/scope
-        sudo -E conda env update -n root -f scope_env.yml
+        cat > scope_env.yml << EOF
+        channels:
+            - defaults
+            - conda-forge
+
+        dependencies:
+            - python>=3.6
+            - ipython
+            - numpy
+            - scipy
+            - scikit-learn
+            - pyopengl
+            - cython
+            - cffi
+            - pyfftw
+            - python-daemon
+            - pyserial
+            - zeromq>=4.2.6
+            - pyzmq
+            - python-blosc
+            - pip
+            - pip:
+                - PyQt5
+                - matplotlib
+                - scikit-image
+                - qtconsole
+                - PySDL2
+                - git+https://github.com/zplab/freeimage-py
+                - git+https://github.com/zplab/zplib
+                - git+https://github.com/zplab/RisWidget
+                - git+https://github.com/zplab/SharedMemoryBuffer
+                - git+https://github.com/zplab/IOTool#subdirectory=py
+                - -e git+https://github.com/zplab/rpc-scope#egg=scope
+                - -e git+https://github.com/zplab/elegant#egg=elegant
+        EOF
+        
+        sudo -E conda env update -n base -f scope_env.yml
         sudo chown -R zplab:zplab /usr/local/scope
         rm $PIP_SRC/pip-delete-this-directory.txt
         for src_dir in $PIP_SRC/*/; do
@@ -202,7 +260,11 @@
         sudo pip install celiagg --global-option=--no-text-rendering
         sudo ris_widget --install-desktop-file
         ipython profile create
-    Copy over `ipython_config.py` file to `~/.ipython/profile_default/ipython_config.py`
+        cat > ~/.ipython/profile_default/ipython_config.py << EOF
+        c.TerminalIPythonApp.display_banner = False
+        c.TerminalInteractiveShell.confirm_exit = False
+        c.TerminalInteractiveShell.display_completions = 'readlinelike'
+        EOF
     
     Also install the worm segmentation tools. Copy over the latest release distribution (e.g. `worm_segmenter-1.zip`) and then run:
     
@@ -210,20 +272,6 @@
         rm worm_segmenter-1.zip
         sudo pip install ./worm_segmenter-1
     
-    Until zeromq 4.2.6 is released and available in conda, we need to custom build libzmq from github, to pick up some bugfixes:
-    
-        sudo apt install libtool
-        commit=889ac2eb3dcf29be1b7bdae93f216d30fd2b9dfb
-        curl -o libzmq.zip https://codeload.github.com/zeromq/libzmq/zip/$commit
-        unzip libzmq.zip && rm libzmq.zip
-        cd libzmq-$commit
-        ./autogen.sh && ./configure && make -j8
-        sudo make install
-        cd ..
-        rm -rf libzmq-$commit
-        sudo pip uninstall pyzmq
-        sudo pip install pyzmq --no-binary pyzmq
-
 16. Install scope-server tools:
 
         sudo job_runner_check --install
@@ -265,8 +313,26 @@
         echo "alias dropbox=.dropbox-dist/dropbox" >> .zshrc
 
 18. Sort out `udev` rules for scope hardware:
-    - Copy `udev-rules` to `/etc/udev/rules.d/20-microscope.rules`
-    - Plug in USB TTY devices, run `dmesg` to see the vendor name and serial number, and add this to the rules file.
+      
+        cat > /etc/udev/rules.d/20-microscope.rules << EOF
+        ## Make descriptive symlinks in /dev to various microscopy devices
+        # Leica microscope
+        SUBSYSTEM=="tty", ATTRS{product}=="USB <-> Serial", ATTRS{manufacturer}=="FTDI", SYMLINK+="ttyScope"
+
+        # Lumencor Spectra lamp
+        SUBSYSTEM=="tty", ATTRS{product}=="FT232R USB UART", ATTRS{manufacturer}=="FTDI", ATTRS{serial}=="A506OLA5", SYMLINK+="ttySpectra"
+
+        # PolyScience circulator
+        SUBSYSTEM=="tty", ATTRS{product}=="VNC1-A As Slave", ATTRS{manufacturer}=="FTDI", SYMLINK+="ttyCirculator"
+
+        # IOTool interface box
+        SUBSYSTEM=="tty", ATTRS{product}=="IOTool", ATTRS{manufacturer}=="zplab.wustl.edu", ATTRS{serial}=="0xFFFA", SYMLINK+="ttyIOTool"
+
+        # Humidity controller
+        SUBSYSTEM=="tty", ATTRS{product}=="USB-RS232 Cable", ATTRS{manufacturer}=="FTDI", ATTRS{serial}=="FT1XDRGS", SYMLINK+="ttyHumidifier"
+        EOF
+    
+    - To customize the rule file as needed, plug in USB TTY devices, run `dmesg` to see the vendor name and serial number, and add this to the rules file.
     - Test, e.g.: `udevadm test $(udevadm info -q path /dev/ttyACM0) |& grep symlink`
     - Then run `sudo udevadm trigger`
 
@@ -278,15 +344,15 @@
 
 20. Configure persistent jumbo frames if using fiber-optic networking:
     Find out the interface name of the fiber optic card by using `ip link` (it should be the one with `state UP` in its line, with name like `enp101s0`).
-    You could also figure it out by finding out the network interface(s) with the `ixgbe` driver:
+    You could also figure it out by finding out the network interface(s) with the `ixgbe` or `atlantic` driver, e.g.:
     
-        ls -l /sys/class/net/*/device/driver | grep ixgbe | cut -d"/" -f5
+        ls -l /sys/class/net/*/device/driver | grep -E 'atlantic|ixgbe' | cut -d"/" -f5
     
     Then run the below, setting the IFNAME variable correctly.
     
         sudo -s
         IFNAME=enp101s0 
-        # or: IFNAME=$(ls -l /sys/class/net/*/device/driver | grep ixgbe | cut -d"/" -f5)
+        # or: IFNAME=$(ls -l /sys/class/net/*/device/driver | grep -E 'atlantic|ixgbe' | cut -d"/" -f5)
         cat > /etc/netplan/99-jumbo-frames.yaml  << EOF
         network:
           version: 2
