@@ -371,12 +371,12 @@
         netplan generate
         netplan apply
 
-21. *(optional)* Install CUDA tools per the (NVIDIA install guide)[https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html]. 
+21. *(optional)* Install CUDA tools per the [NVIDIA install guide](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html). 
     First, make sure you have the appropriate header files for building kernel modules:
 
         sudo apt install linux-headers-$(uname -r)
     
-    Then follow the instructions here: https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1804&target_type=debnetwork . **NB: change the `target_version` parameter to whatever LTS release you are using; the link above is only for 18.04.**. For the record, the instructions for 18.04 look like this:
+    Then follow the instructions here: https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1804&target_type=debnetwork. **NB: change the `target_version` parameter to whatever LTS release you are using; the link above is only for 18.04.**. For the record, the instructions for 18.04 look like this:
     
         wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
         sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
