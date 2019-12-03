@@ -9,7 +9,7 @@ scope_configuration = dict(
         ('iotool', 'iotool.IOTool'),
         ('il.spectra', 'spectra.Spectra'), # dm6
         ('tl.lamp', 'tl_lamp.SutterLED_Lamp'),
-        ('camera', 'andor.Camera'),
+        ('camera', 'andor.Zyla'),
         ('camera.acquisition_sequencer', 'acquisition_sequencer.AcquisitionSequencer'),
         ('camera.autofocus', 'autofocus.Autofocus'),
         ('temperature_controller', 'temp_control.Circulator'), # dm6

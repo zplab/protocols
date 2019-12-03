@@ -1,0 +1,19 @@
+## Make descriptive symlinks in /dev to various microscopy devices
+
+# Leica microscope
+SUBSYSTEM=="tty", ATTRS{product}=="USB <-> Serial", ATTRS{manufacturer}=="FTDI", SYMLINK+="ttyScope"
+
+# Lumencor Spectra lamp
+SUBSYSTEM=="tty", ATTRS{product}=="FT232R USB UART", ATTRS{manufacturer}=="FTDI", ATTRS{serial}=="A506OLA5", SYMLINK+="ttySpectra"
+
+# PolyScience circulator
+#SUBSYSTEM=="tty", ATTRS{product}=="FT232R USB UART", ATTRS{manufacturer}=="FTDI", ATTRS{serial}=="A906CHER", SYMLINK+="ttyCirculator"
+SUBSYSTEM=="tty", ATTRS{product}=="VNC1-A As Slave", ATTRS{manufacturer}=="FTDI", SYMLINK+="ttyCirculator"
+
+# IOTool interface box
+SUBSYSTEM=="tty", ATTRS{product}=="IOTool", ATTRS{manufacturer}=="zplab.wustl.edu", ATTRS{serial}=="0xFFFA", SYMLINK+="ttyIOTool"
+
+# Humidity controller
+SUBSYSTEM=="tty", ATTRS{product}=="USB-RS232 Cable", ATTRS{manufacturer}=="FTDI", ATTRS{serial}=="FT1XDRGS", SYMLINK+="ttyHumidifier"
+
+

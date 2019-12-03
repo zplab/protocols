@@ -16,3 +16,7 @@ UUID=ed08812d-aa2a-42f5-80d6-5994089d03fb /home           ext4    defaults      
 UUID=bb877980-0e24-4fcf-a8ce-bba04c28d701 none            swap    sw              0       0
 
 UUID=055dea5b-8292-41a4-b490-36b4e032aa3c /mnt/iscopearray  xfs noatime,inode64 0 2
+
+
+//zpl-9000.wucon.wustl.edu/9karray  /mnt/9karray    cifs    username=zplab,uid=zplab,gid=zplab,rw,file_mode=0775,dir_mode=0775,_netdev,noauto 0   0
+//zpl-fluoro-scope.wucon.wustl.edu/zplab  /mnt/fluoro-scope    cifs    username=zplab,uid=zplab,gid=zplab,_netdev,noauto 0   0

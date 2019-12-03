@@ -1,0 +1,6 @@
+network:
+  version: 2
+  ethernets:
+    enp101s0:
+      dhcp4: true
+      mtu: 9000

@@ -17,3 +17,10 @@ UUID=0c2ebdef-a7f4-4ded-808e-fc6e1467b4a0 /home ext4 defaults 0 2
 UUID=25d5e75d-9abe-4380-a41b-defe97622ea2 none swap sw 0 0
 # MD RAID
 UUID=672a9970-5b29-40ba-b1b9-285c948e14ef /mnt/9karray xfs noatime,inode64 0 2
+
+//zpl-scope.wucon.wustl.edu/scopearray    /mnt/scopearray    cifs    username=zplab,gid=zplab,rw,file_mode=0775,dir_mode=0775,_netdev,noauto 0   0
+//zpl-purple.wucon.wustl.edu/purplearray    /mnt/purplearray    cifs    username=zplab,gid=zplab,rw,file_mode=0775,dir_mode=0775,_netdev,noauto 0   0
+//zpl-iscope.wucon.wustl.edu/iscopearray    /mnt/iscopearray    cifs    username=zplab,gid=zplab,rw,file_mode=0775,dir_mode=0775,_netdev,noauto 0   0
+//lugia.wucon.wustl.edu/lugia_array    /mnt/lugia_array    cifs    username=zplab,gid=zplab,rw,file_mode=0775,dir_mode=0775,_netdev,noauto 0   0
+//squidward.wucon.wustl.edu/squidarray    /mnt/squidarray    cifs    username=zplab,gid=zplab,rw,file_mode=0775,dir_mode=0775,_netdev,noauto 0   0
+//zpl-janeway.wucon.wustl.edu/janewarray    /mnt/janewarray    cifs    username=zplab,gid=zplab,rw,file_mode=0775,dir_mode=0775,_netdev,noauto 0   0

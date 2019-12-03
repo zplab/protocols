@@ -1,5 +1,5 @@
 #HOST=zpl-scope
-for HOST in zpl-scope zpl-iscope zpl-purple zpl-9000
+for HOST in zpl-scope zpl-iscope zpl-purple zpl-9000 zpl-janeway
 do
     if [ ! -d $HOST ]
     then

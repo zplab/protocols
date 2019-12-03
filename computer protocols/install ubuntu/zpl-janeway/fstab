@@ -1,0 +1,22 @@
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# / was on /dev/nvme0n1p2 during installation
+UUID=14b7c299-328a-4635-9140-dbf8095b051e /               btrfs   defaults,subvol=@ 0       1
+UUID=14b7c299-328a-4635-9140-dbf8095b051e  /mnt/btrfs-root btrfs defaults,subvol=/,noauto 0 1
+# /boot/efi was on /dev/nvme0n1p1 during installation
+UUID=19A2-B349  /boot/efi       vfat    umask=0077      0       1
+# /home was on /dev/nvme0n1p3 during installation
+UUID=b4674a01-ab37-4d0e-a141-0c81e285c9b4 /home           ext4    defaults        0       2
+# swap was on /dev/nvme0n1p4 during installation
+UUID=1a3ebd10-190f-45eb-bdbc-391fe5861518 none            swap    sw              0       0
+UUID=a535b673-4f04-4e82-87e1-9b84f390fec9 /mnt/janewarray xfs  noatime,inode64  0	2  
+
+//zpl-iscope.wucon.wustl.edu/iscopearray    /mnt/iscopearray    cifs    noauto,username=zplab,gid=zplab,rw,file_mode=0775,dir_mode=0775,_netdev 0   0
+//lugia.wucon.wustl.edu/lugia_array  /mnt/lugia_array    cifs    noauto,username=zplab,gid=zplab,rw,file_mode=0775,dir_mode=0775,_netdev 0   0
+//zpl-9000.wucon.wustl.edu/9karray  /mnt/9karray    cifs    noauto,username=zplab,gid=zplab,rw,file_mode=0775,dir_mode=0775,_netdev 0   0
+//zpl-purple.wucon.wustl.edu/purplearray    /mnt/purplearray    cifs    noauto,username=zplab,gid=zplab,rw,file_mode=0775,dir_mode=0775,_netdev 0   0
