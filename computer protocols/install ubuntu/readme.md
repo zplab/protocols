@@ -5,8 +5,8 @@
   - Run `usb-creator-kde` (may need to install with `apt` first), and install the ISO to a USB drive. On a Mac, you can use Etcher to do this. In either case, do **not** use UNetBootin, which can't make UEFI-bootable drives, which is now the preferred option.
   - Reboot the target machine and select the USB disk (select the UEFI OS partition, if it appears.
   - Install Kubuntu, using the following partition scheme on the system SSD:
-  - 256 GB / btrfs
-  - remaining /home ext4
+    - 256 GB / btrfs
+    - remaining /home ext4
 
 2. Install basic tools:
 
