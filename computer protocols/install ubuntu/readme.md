@@ -1,9 +1,11 @@
 # Kubuntu installation for zplab microscopes
 
 1. install Kubuntu from a USB drive:
-  - On an existing Kubuntu install, download the latest LTS release ISO file.
-  - Run `usb-creator-kde` (may need to install with `apt` first), and install the ISO to a USB drive. On a Mac, you can use Etcher to do this. In either case, do **not** use UNetBootin, which can't make UEFI-bootable drives, which is now the preferred option.
-  - Reboot the target machine and select the USB disk (select the UEFI OS partition, if it appears.
+  - Download the latest LTS release ISO file and transfer it to a USB drive:
+    - If on Kubuntu, run `usb-creator-kde` (may need to install with `apt` first) to transfer the ISO to the USB drive.
+    - If on a Mac, you can use Etcher to do this.
+    - In either case, do **not** use UNetbootin, which can't make UEFI-bootable drives. This is now the preferred option, and it can be difficult to boot with BIOS-mode USB disks nowadays.
+  - Reboot the target machine and select the USB disk (select the UEFI OS partition, if it appears).
   - Install Kubuntu, using the following partition scheme on the system SSD:
     - 256 GB / btrfs
     - remaining /home ext4
