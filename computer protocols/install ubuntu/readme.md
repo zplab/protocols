@@ -372,11 +372,12 @@
         netplan apply
 
 21. *(optional)* Install CUDA tools per the [NVIDIA install guide](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html). 
+    
     First, make sure you have the appropriate header files for building kernel modules:
 
         sudo apt install linux-headers-$(uname -r)
     
-    Then follow the instructions here: https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1804&target_type=debnetwork. **NB: change the `target_version` parameter to whatever LTS release you are using; the link above is only for 18.04.**. For the record, the instructions for 18.04 look like this:
+    Then follow the instructions here: https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1804&target_type=debnetwork. **NB: change the `target_version` parameter to whatever LTS release you are using; the link above is only for 18.04**. For the record, the instructions for 18.04 look like this:
     
         wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
         sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
@@ -385,7 +386,7 @@
         sudo apt-get update
         sudo apt-get -y install cuda
 
-    Then add `export PATH=/usr/local/cuda/bin:${PATH}` to the `.zshrc` file. To test the CUDA install, the following is a guide:
+    Then add `export PATH=/usr/local/cuda/bin:${PATH}` to the `.zshrc` file. To test the CUDA install, the following should be a rough guide:
     
         nvidia-smi # should give expected driver and CUDA versions
         nvcc --version # should show expected version
@@ -398,9 +399,9 @@
         make
         ./bandwidthTest --device=all
     
-21. Install system tracking utilities and make a BTRFS snapshot:
+22. Install system tracking utilities and make a BTRFS snapshot:
 
         sudo apt-get install etckeeper
         sudo snapshot create base-system
 
-22. From another computer, run `scp.sh` (after setting the `HOST` variable) to make a backup copy of all relevant config files for that microscope.
+23. From another computer, run `scp.sh` (after setting the `HOST` variable) to make a backup copy of all relevant config files for that microscope.
