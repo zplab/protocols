@@ -7,28 +7,31 @@
     - In either case, do **not** use UNetbootin, which can't make UEFI-bootable drives. This is now the preferred option, and it can be difficult to boot with BIOS-mode USB disks nowadays.
   - Reboot the target machine and select the USB disk (select the UEFI OS partition, if it appears).
   - Install Kubuntu, using the following partition scheme on the system SSD:
+    - 200 MB EFI partition
+    - 400 MB /boot ext4
     - 256 GB / btrfs
     - remaining /home ext4
+    - Install bootloader on whole SSD device (rather than a specific partition)
 
 2. Install basic tools:
 
-       sudo apt-get update
-       sudo apt-get install ssh
-       sudo apt-get remove --purge libreoffice*
-       sudo apt-get remove --purge mysql*
-       sudo apt-get clean
-       sudo apt-get autoremove
-       sudo apt-get full-upgrade
+       sudo apt update
+       sudo apt install ssh
+       sudo apt remove --purge libreoffice*
+       sudo apt remove --purge mysql*
+       sudo apt clean
+       sudo apt autoremove
+       sudo apt full-upgrade
        
-3. Install video drivers. Use latest recommended (370 is example here):
+3. Install video drivers. Use latest recommended (440 is example here):
 
        sudo add-apt-repository ppa:graphics-drivers/ppa
-       sudo apt-get update
-       sudo apt-get install nvidia-370
+       sudo apt update
+       sudo apt install nvidia-driver-440
 
 4. Install and configure `mdadm`, the RAID manager:
 
-       sudo apt-get install mdadm
+       sudo apt install mdadm
    Now edit `/etc/mdadm/mdadm.conf` to uncommment or add these lines:
    
        DEVICE partitions
@@ -36,7 +39,8 @@
        AUTO +homehost
        MAILADDR zpincus@wustl.edu
        MAILFROM mdadm@zpl-scope.wucon.wustl.edu
-   (The `MAILFROM` line should reflect the scope's name obviously.)
+       
+   The `MAILFROM` line should reflect the scope's name obviously. If an existing RAID was found, comment it out the line adding it by UUID. We'll just use partition scanning to find RAID devices.
 
 5. If the RAID is pre-existing, assemble it:
 
@@ -55,10 +59,11 @@
      - create the RAID:
      
            sudo mdadm --create --verbose /dev/md/ARRAYNAME --level=6 --raid-devices=8 /dev/sda1 /dev/sdb1 /dev/sdc1 /dev/sdd1 /dev/sde1 /dev/sdf1 /dev/sdg1 /dev/sdh1  
-
+    
+    (where `ARRAYNAME` is replaced by whatever (lower-case) name for the array you desire)
 6. Install XFS:
 
-       sudo apt-get install xfsprogs
+       sudo apt install xfsprogs
    If the RAID is new, make an XFS filesystem on it: 
    
        sudo mkfs -t xfs /dev/md/ARRAYNAME
@@ -91,9 +96,9 @@
 
 9. Install `zsh`:
 
-       sudo apt-get install zsh
+       sudo apt install zsh
        chsh --shell `which zsh` zplab
-       cat > ~/.zshrc << EOF
+       cat > ~/.zshrc << 'EOF'
        setopt hist_ignore_dups
        setopt append_history
        HISTSIZE=100000
@@ -124,8 +129,9 @@
 
 10. Install SMB
 
-        sudo apt-get install samba
-    Edit `/etc/samba/smb.conf` to add or change:
+        sudo apt install samba
+        
+    Edit `/etc/samba/smb.conf` to add or change (where again, `ARRAYNAME` is replaced by the actual name of the disk array to share):
     
         workgroup = ZPLAB
         server string = %h (zplab microscope)
@@ -149,15 +155,15 @@
 
 11. Enable RAID monitoring:
 
-        sudo apt-get install msmtp msmtp-mta
+        sudo apt install msmtp msmtp-mta
         sudo cat > /etc/msmtprc << EOF
         account default
         host osmtp.wustl.edu
-        from zplab@SCOPENAME.wustl.edu
+        from zplab@${HOST}.wustl.edu
         syslog LOG_MAIL
         EOF
 
-        sudo apt-get install smartmontools
+        sudo apt install smartmontools
     Edit /etc/smartd.conf so that the first DEVICESCAN line reads:
     
         DEVICESCAN -H -l error -l selftest -f -s (O/../.././00|S/../.././12|L/../01/./06) -m zpincus@wustl.edu -M diminishing
@@ -209,7 +215,7 @@
     
         sudo -s
         mkdir -p /usr/local/miniconda3/etc/conda/activate.d
-        cat > /usr/local/miniconda3/etc/conda/activate.d/remove_base_ps1.sh << EOF
+        cat > /usr/local/miniconda3/etc/conda/activate.d/remove_base_ps1.sh << 'EOF'
         PS1="$(echo $PS1 | sed 's/(base) //')"
         EOF
     
@@ -286,40 +292,7 @@
     Copy `fftw_wisdom` over to `/usr/local/scope` if it was previously calculated **on this machine**. Then run `scope_server`, stop it, and edit
     the newly-created `/usr/local/scope/configuration.py` file as appropriate.
 
-17. Install dropbox (from https://www.burgundywall.com/post/autostart-dropbox-on-fedora):
-
-        cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
-    Run dropboxd interactively to authorize:
-    
-        .dropbox-dist/dropboxd
-    Install dropbox:
-    
-        wget -O .dropbox-dist/dropbox "https://www.dropbox.com/download?dl=packages/dropbox.py"
-        chmod +x .dropbox-dist/dropbox
-        mkdir -p ~/.config/systemd/user
-        cat > ~/.config/systemd/user/dropbox.service << EOF
-        [Unit]
-        Description=dropbox agent
-        After=network.target
-
-        [Service]
-        Restart=always
-        ExecStart=/usr/bin/env %h/.dropbox-dist/dropboxd
-        ExecStop=/usr/bin/env %h/.dropbox-dist/dropbox stop
-
-        [Install]
-        WantedBy=default.target
-        EOF
-    Load the new service into `systemd` and start it.
-    
-        systemctl --user daemon-reload
-        systemctl --user enable dropbox.service
-        systemctl --user start dropbox.service
-        systemctl --user status dropbox.service
-        .dropbox-dist/dropbox status
-        echo "alias dropbox=.dropbox-dist/dropbox" >> .zshrc
-
-18. Sort out `udev` rules for scope hardware:
+17. Sort out `udev` rules for scope hardware:
       
         cat > /etc/udev/rules.d/20-microscope.rules << EOF
         ## Make descriptive symlinks in /dev to various microscopy devices
@@ -343,13 +316,17 @@
     - Test, e.g.: `udevadm test $(udevadm info -q path /dev/ttyACM0) |& grep symlink`
     - Then run `sudo udevadm trigger`
 
-19. Install latest andor drivers, but not bitflow (not needed for USB cameras):
+18. Install latest andor drivers, but not bitflow (not needed for USB cameras).
 
-        cd "Dropbox/pincuslab-common/Hardware Manuals/Andor Zyla/andor-sdk3-3.13.30034.0"
+    First, download the latest [Andor SDK](https://wustl.box.com/s/1fw6vvg2f1yxxctpzkkrfgmgkhlytykk) and install:
+    
+        unzip andor-sdk3-*
+        rm andor-sdk3-*.zip
+        cd andor-sdk3-*
         sudo ./install_andor
         sudo udevadm trigger
 
-20. Configure persistent jumbo frames if using fiber-optic networking:
+19. Configure persistent jumbo frames if using fiber-optic networking:
     Find out the interface name of the fiber optic card by using `ip link` (it should be the one with `state UP` in its line, with name like `enp101s0`).
     You could also figure it out by finding out the network interface(s) with the `ixgbe` or `atlantic` driver, e.g.:
     
@@ -371,7 +348,7 @@
         netplan generate
         netplan apply
 
-21. *(optional)* Install CUDA tools per the [NVIDIA install guide](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html). 
+20. *(optional)* Install CUDA tools per the [NVIDIA install guide](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html). 
     
     First, make sure you have the appropriate header files for building kernel modules:
 
@@ -383,8 +360,8 @@
         sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
         sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
         sudo add-apt-repository "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /"
-        sudo apt-get update
-        sudo apt-get -y install cuda
+        sudo apt update
+        sudo apt -y install cuda
 
     Then add `export PATH=/usr/local/cuda/bin:${PATH}` to the `.zshrc` file. To test the CUDA install, the following should be a rough guide:
     
@@ -399,9 +376,15 @@
         make
         ./bandwidthTest --device=all
     
-22. Install system tracking utilities and make a BTRFS snapshot:
+    To install `nvidia-docker`, first install Docker per the [official instructions](https://docs.docker.com/install/linux/docker-ce/ubuntu/) then install Nvidia-docker per [its instructions](https://github.com/NVIDIA/nvidia-docker/blob/master/README.md).
+    
+    Last, install pytorch using pip (*not conda*, as conda wants to install its own CUDA tools version):
+        
+        sudo pip install torch torchvision
+    
+21. Install system tracking utilities and make a BTRFS snapshot:
 
-        sudo apt-get install etckeeper
+        sudo apt install etckeeper
         sudo snapshot create base-system
 
-23. From another computer, run `scp.sh` (after setting the `HOST` variable) to make a backup copy of all relevant config files for that microscope.
+22. From another computer, run `scp.sh` (after setting the `HOST` variable) to make a backup copy of all relevant config files for that microscope.
