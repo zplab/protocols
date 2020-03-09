@@ -92,23 +92,29 @@ EOF
 - Download [miniconda for Python 3](http://conda.pydata.org/miniconda.html):  
     **On OS X:**
     
-      curl -O https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+        curl -O https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
 
     **On Linux:**
     
-      curl -O https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+        curl -O https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
 - Install miniconda:
 
-      bash Miniconda3-latest-*-x86_64.sh -b -p $HOME/miniconda
-      rehash
-      rm Miniconda3-latest-*-x86_64.sh
+        bash Miniconda3-latest-*-x86_64.sh -b -p $HOME/miniconda
+        rehash
+        source $HOME/miniconda/bin/activate
+        conda init zsh
+        rm Miniconda3-latest-*-x86_64.sh
+        mkdir -p $HOME/miniconda/etc/conda/activate.d
+        cat > $HOME/miniconda/etc/conda/activate.d/remove_base_ps1.sh << 'EOF'
+        PS1="$(echo $PS1 | sed 's/(base) //')"
+        EOF
 
     (The `rehash` line makes sure that `zsh` knows about the new `conda` command.)
 
     Here’s a [quick guide](http://conda.pydata.org/docs/test-drive.html) to Anaconda, though note that for basic use you don’t need to know any of this.
 
-- Install the basic suite of zplab tools into the root miniconda environment. Ignore any message about needing to activate the `root` environment: the root (aka `base`) environment is active by default. (On macs, you may need to first do `export MACOSX_DEPLOYMENT_TARGET=10.9` for freeimage to compile correctly.)
+- Install the basic suite of zplab tools into the base miniconda environment. Ignore any message about needing to activate the `root` environment: the root (aka `base`) environment is active by default. (On macs, you may need to first do `export MACOSX_DEPLOYMENT_TARGET=10.9` for freeimage to compile correctly.)
 
 ```
 cat > user_env.yml << EOF
@@ -126,6 +132,7 @@ dependencies:
     - cython
     - cffi
     - pyfftw
+    - pip
     - pip:
         - pyqt5
         - matplotlib
@@ -138,7 +145,7 @@ dependencies:
 EOF
 pip install --upgrade pip
 conda update conda
-conda env update -n root -f user_env.yml
+conda env update -n base -f user_env.yml
 pip install celiagg --global-option=--no-text-rendering
 rm user_env.yml
 ```

@@ -8,7 +8,6 @@
   - Reboot the target machine and select the USB disk (select the UEFI OS partition, if it appears).
   - Install Kubuntu, using the following partition scheme on the system SSD:
     - 200 MB EFI partition
-    - 400 MB /boot ext4
     - 256 GB / btrfs
     - remaining /home ext4
     - Install bootloader on whole SSD device (rather than a specific partition)
@@ -318,13 +317,14 @@
 
 18. Install latest andor drivers, but not bitflow (not needed for USB cameras).
 
-    First, download the latest [Andor SDK](https://wustl.box.com/s/1fw6vvg2f1yxxctpzkkrfgmgkhlytykk) and install:
+    First, download the latest [Andor SDK](https://wustl.box.com/s/3jvw5rou1ttv0ecd7t4bbla8m1l60mde) and install:
     
         unzip andor-sdk3-*
         rm andor-sdk3-*.zip
         cd andor-sdk3-*
         sudo ./install_andor
         sudo udevadm trigger
+        rm -r andor-sdk3-*
 
 19. Configure persistent jumbo frames if using fiber-optic networking:
     Find out the interface name of the fiber optic card by using `ip link` (it should be the one with `state UP` in its line, with name like `enp101s0`).
